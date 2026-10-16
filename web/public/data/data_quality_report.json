@@ -1,0 +1,46 @@
+{
+  "simulated": true,
+  "dedup_tolerance_seconds": 5,
+  "duplicates": {
+    "injected": 1322,
+    "detected_and_removed": 1322,
+    "match": true
+  },
+  "legitimate_repeats_kept": {
+    "total": 5085,
+    "by_event": {
+      "kyc_started": 5085
+    },
+    "ground_truth_kyc_retries": 5085
+  },
+  "out_of_order": {
+    "injected": 661,
+    "detected_and_corrected": 661,
+    "by_event": {
+      "decision_made": 162,
+      "kyc_completed": 140,
+      "kyc_started": 290,
+      "loan_disbursed": 69
+    },
+    "action": "timestamp set to the preceding stage's first timestamp; flagged ts_corrected",
+    "match": true
+  },
+  "null_device": {
+    "injected": 250,
+    "labelled_unknown": 250
+  },
+  "missing_preceding_stage": {
+    "injected_users": 60,
+    "users_excluded_from_later_stages": 60
+  },
+  "unresolved_anomalies": {
+    "events_for_unknown_users": 0,
+    "loans_without_disbursal_event": 0
+  },
+  "handled_by_design": {
+    "randomized_users_without_kyc_started_event": {
+      "count": 21,
+      "handling": "the assignment log proves KYC entry, so the experiment (ITT) still counts them"
+    }
+  }
+}

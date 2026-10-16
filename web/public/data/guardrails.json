@@ -1,0 +1,107 @@
+{
+  "simulated": true,
+  "assignment_counts": {
+    "control": 8639,
+    "treatment": 8740
+  },
+  "pass_rule": {
+    "pass": "the one-sided 95% bound lies inside the margin",
+    "fail": "the point estimate lies beyond the margin",
+    "inconclusive": "the point estimate is inside the margin but the bound crosses it",
+    "note": "not statistically significant never means credit quality preserved"
+  },
+  "decision_guardrail": "delinquent_per_1000_randomized",
+  "guardrails": {
+    "delinquent_per_1000_randomized": {
+      "role": "decision",
+      "name": "early-delinquent loans per 1,000 randomized users",
+      "unit": "per 1,000 randomized users",
+      "direction": "higher_is_worse",
+      "control": {
+        "numerator": 134,
+        "denominator": 8639,
+        "value": 15.5110545202
+      },
+      "treatment": {
+        "numerator": 148,
+        "denominator": 8740,
+        "value": 16.9336384439
+      },
+      "difference": 1.42258392374,
+      "ci95": [
+        -2.35339417403,
+        5.2053250392
+      ],
+      "one_sided_95_bound": 4.59091800775,
+      "margin": 2.1,
+      "label": "inconclusive",
+      "margin_rationale": "At the 3pp business MDE, the simpler flow adds about 13.9 disbursed loans per 1,000 randomized users. Each early-delinquent loan forgoes the profit of a good loan and loses about 45% of principal, so the extra loans stay profitable only while no more than 15.1% of them go early-delinquent. The margin is that break-even count. Note the per-user count rises mechanically with conversion: more loans means more delinquent loans even at an unchanged per-loan rate.",
+      "extra_sample_to_resolve": {
+        "randomized_users_per_arm_for_bound_inside_margin_if_estimate_holds": 188179,
+        "additional_users_per_arm": 179540,
+        "randomized_users_per_arm_for_80pct_chance": 430016,
+        "additional_users_per_arm_for_80pct_chance": 421377
+      }
+    },
+    "early_delinquency_rate": {
+      "role": "diagnostic",
+      "name": "early delinquency rate among disbursed loans",
+      "unit": "pp",
+      "direction": "higher_is_worse",
+      "control": {
+        "numerator": 134,
+        "denominator": 1983,
+        "value": 6.75743822491
+      },
+      "treatment": {
+        "numerator": 148,
+        "denominator": 2202,
+        "value": 6.72116257947
+      },
+      "difference": -0.0362756454385,
+      "ci95": [
+        -1.57333766941,
+        1.48300546071
+      ],
+      "one_sided_95_bound": 1.2382349582,
+      "margin": 1.5,
+      "label": "pass",
+      "margin_rationale": "Roughly a quarter of the ~6% baseline; beyond this the credit policy team would re-price. Diagnostic only: the treatment changes who gets a loan, so arms hold different borrower mixes.",
+      "extra_sample_to_resolve": null
+    },
+    "approval_rate": {
+      "role": "diagnostic",
+      "name": "approval rate among credit decisions",
+      "unit": "pp",
+      "direction": "lower_is_worse",
+      "control": {
+        "numerator": 2314,
+        "denominator": 3967,
+        "value": 58.3312326695
+      },
+      "treatment": {
+        "numerator": 2583,
+        "denominator": 4380,
+        "value": 58.9726027397
+      },
+      "difference": 0.641370070202,
+      "ci95": [
+        -1.47286064017,
+        2.75646212618
+      ],
+      "one_sided_95_bound": -1.13323382603,
+      "margin": -3.0,
+      "label": "pass",
+      "margin_rationale": "A drop beyond 3pp would signal the simplified flow is filling the decision queue with applicants underwriting rejects, raising bureau and ops cost per loan. Diagnostic only.",
+      "extra_sample_to_resolve": null
+    }
+  },
+  "per_loan_vs_per_user": {
+    "loans_per_1000_randomized": {
+      "control": 229.540456071,
+      "treatment": 251.945080092
+    },
+    "explanation": "Per loan, the early delinquency rate moved from 6.76% to 6.72% (-0.04pp). Per 1,000 randomized users, early-delinquent loans moved from 15.51 to 16.93 (+1.42). The per-user count rises mechanically with conversion: the treatment arm disbursed 251.9 loans per 1,000 randomized users vs 229.5 in control, so it carries more delinquent loans even at an unchanged per-loan rate. The per-loan rate compares different borrower mixes, because the simpler flow lets marginal applicants through, so only the per-user count is a randomized comparison, and only it decides."
+  },
+  "outcome_maturity_note": "Early delinquency covers only the first EMI (30+ days past due). Later delinquency and eventual losses are not yet observable for these loans."
+}

@@ -1,0 +1,301 @@
+{
+  "simulated": true,
+  "source": "outputs/mde_curve.csv",
+  "rows": [
+    {
+      "users_per_arm": 1000,
+      "mde_pp": 6.250572524,
+      "weeks_of_traffic": 0.4594532506
+    },
+    {
+      "users_per_arm": 1500,
+      "mde_pp": 5.107650011,
+      "weeks_of_traffic": 0.6891798759
+    },
+    {
+      "users_per_arm": 2000,
+      "mde_pp": 4.425089012,
+      "weeks_of_traffic": 0.9189065013
+    },
+    {
+      "users_per_arm": 2500,
+      "mde_pp": 3.958822491,
+      "weeks_of_traffic": 1.148633127
+    },
+    {
+      "users_per_arm": 3000,
+      "mde_pp": 3.61444726,
+      "weeks_of_traffic": 1.378359752
+    },
+    {
+      "users_per_arm": 3500,
+      "mde_pp": 3.346606266,
+      "weeks_of_traffic": 1.608086377
+    },
+    {
+      "users_per_arm": 4000,
+      "mde_pp": 3.130910171,
+      "weeks_of_traffic": 1.837813003
+    },
+    {
+      "users_per_arm": 4500,
+      "mde_pp": 2.951920859,
+      "weeks_of_traffic": 2.067539628
+    },
+    {
+      "users_per_arm": 5000,
+      "mde_pp": 2.800479621,
+      "weeks_of_traffic": 2.297266253
+    },
+    {
+      "users_per_arm": 5500,
+      "mde_pp": 2.670332006,
+      "weeks_of_traffic": 2.526992878
+    },
+    {
+      "users_per_arm": 6000,
+      "mde_pp": 2.556740719,
+      "weeks_of_traffic": 2.756719504
+    },
+    {
+      "users_per_arm": 6500,
+      "mde_pp": 2.456614862,
+      "weeks_of_traffic": 2.986446129
+    },
+    {
+      "users_per_arm": 7000,
+      "mde_pp": 2.367275507,
+      "weeks_of_traffic": 3.216172754
+    },
+    {
+      "users_per_arm": 7500,
+      "mde_pp": 2.287023545,
+      "weeks_of_traffic": 3.44589938
+    },
+    {
+      "users_per_arm": 8000,
+      "mde_pp": 2.21439559,
+      "weeks_of_traffic": 3.675626005
+    },
+    {
+      "users_per_arm": 8500,
+      "mde_pp": 2.148316024,
+      "weeks_of_traffic": 3.90535263
+    },
+    {
+      "users_per_arm": 9000,
+      "mde_pp": 2.087829265,
+      "weeks_of_traffic": 4.135079256
+    },
+    {
+      "users_per_arm": 9500,
+      "mde_pp": 2.032200819,
+      "weeks_of_traffic": 4.364805881
+    },
+    {
+      "users_per_arm": 10000,
+      "mde_pp": 1.980833691,
+      "weeks_of_traffic": 4.594532506
+    },
+    {
+      "users_per_arm": 10500,
+      "mde_pp": 1.932990394,
+      "weeks_of_traffic": 4.824259132
+    },
+    {
+      "users_per_arm": 11000,
+      "mde_pp": 1.888569634,
+      "weeks_of_traffic": 5.053985757
+    },
+    {
+      "users_per_arm": 11500,
+      "mde_pp": 1.847071039,
+      "weeks_of_traffic": 5.283712382
+    },
+    {
+      "users_per_arm": 12000,
+      "mde_pp": 1.808192092,
+      "weeks_of_traffic": 5.513439008
+    },
+    {
+      "users_per_arm": 12500,
+      "mde_pp": 1.771667323,
+      "weeks_of_traffic": 5.743165633
+    },
+    {
+      "users_per_arm": 13000,
+      "mde_pp": 1.737266808,
+      "weeks_of_traffic": 5.972892258
+    },
+    {
+      "users_per_arm": 13500,
+      "mde_pp": 1.704790161,
+      "weeks_of_traffic": 6.202618884
+    },
+    {
+      "users_per_arm": 14000,
+      "mde_pp": 1.674182982,
+      "weeks_of_traffic": 6.432345509
+    },
+    {
+      "users_per_arm": 14500,
+      "mde_pp": 1.644870441,
+      "weeks_of_traffic": 6.662072134
+    },
+    {
+      "users_per_arm": 15000,
+      "mde_pp": 1.617348254,
+      "weeks_of_traffic": 6.891798759
+    },
+    {
+      "users_per_arm": 15500,
+      "mde_pp": 1.590992958,
+      "weeks_of_traffic": 7.121525385
+    },
+    {
+      "users_per_arm": 16000,
+      "mde_pp": 1.566062732,
+      "weeks_of_traffic": 7.35125201
+    },
+    {
+      "users_per_arm": 16500,
+      "mde_pp": 1.542101327,
+      "weeks_of_traffic": 7.580978635
+    },
+    {
+      "users_per_arm": 17000,
+      "mde_pp": 1.519258542,
+      "weeks_of_traffic": 7.810705261
+    },
+    {
+      "users_per_arm": 17500,
+      "mde_pp": 1.497401544,
+      "weeks_of_traffic": 8.040431886
+    },
+    {
+      "users_per_arm": 18000,
+      "mde_pp": 1.476461457,
+      "weeks_of_traffic": 8.270158511
+    },
+    {
+      "users_per_arm": 18500,
+      "mde_pp": 1.456375963,
+      "weeks_of_traffic": 8.499885137
+    },
+    {
+      "users_per_arm": 19000,
+      "mde_pp": 1.437046835,
+      "weeks_of_traffic": 8.729611762
+    },
+    {
+      "users_per_arm": 19500,
+      "mde_pp": 1.418454368,
+      "weeks_of_traffic": 8.959338387
+    },
+    {
+      "users_per_arm": 20000,
+      "mde_pp": 1.400660965,
+      "weeks_of_traffic": 9.189065013
+    },
+    {
+      "users_per_arm": 20500,
+      "mde_pp": 1.383492265,
+      "weeks_of_traffic": 9.418791638
+    },
+    {
+      "users_per_arm": 21000,
+      "mde_pp": 1.366936589,
+      "weeks_of_traffic": 9.648518263
+    },
+    {
+      "users_per_arm": 21500,
+      "mde_pp": 1.350958531,
+      "weeks_of_traffic": 9.878244889
+    },
+    {
+      "users_per_arm": 22000,
+      "mde_pp": 1.335525658,
+      "weeks_of_traffic": 10.10797151
+    },
+    {
+      "users_per_arm": 22500,
+      "mde_pp": 1.32060813,
+      "weeks_of_traffic": 10.33769814
+    },
+    {
+      "users_per_arm": 23000,
+      "mde_pp": 1.306178363,
+      "weeks_of_traffic": 10.56742476
+    },
+    {
+      "users_per_arm": 23500,
+      "mde_pp": 1.292210753,
+      "weeks_of_traffic": 10.79715139
+    },
+    {
+      "users_per_arm": 24000,
+      "mde_pp": 1.278628026,
+      "weeks_of_traffic": 11.02687802
+    },
+    {
+      "users_per_arm": 24500,
+      "mde_pp": 1.265643525,
+      "weeks_of_traffic": 11.25660464
+    },
+    {
+      "users_per_arm": 25000,
+      "mde_pp": 1.252867915,
+      "weeks_of_traffic": 11.48633127
+    },
+    {
+      "users_per_arm": 25500,
+      "mde_pp": 1.240392916,
+      "weeks_of_traffic": 11.71605789
+    },
+    {
+      "users_per_arm": 26000,
+      "mde_pp": 1.228579507,
+      "weeks_of_traffic": 11.94578452
+    },
+    {
+      "users_per_arm": 26500,
+      "mde_pp": 1.216879185,
+      "weeks_of_traffic": 12.17551114
+    },
+    {
+      "users_per_arm": 27000,
+      "mde_pp": 1.205553547,
+      "weeks_of_traffic": 12.40523777
+    },
+    {
+      "users_per_arm": 27500,
+      "mde_pp": 1.19452135,
+      "weeks_of_traffic": 12.63496439
+    },
+    {
+      "users_per_arm": 28000,
+      "mde_pp": 1.18375287,
+      "weeks_of_traffic": 12.86469102
+    },
+    {
+      "users_per_arm": 28500,
+      "mde_pp": 1.173465081,
+      "weeks_of_traffic": 13.09441764
+    },
+    {
+      "users_per_arm": 29000,
+      "mde_pp": 1.163257158,
+      "weeks_of_traffic": 13.32414427
+    },
+    {
+      "users_per_arm": 29500,
+      "mde_pp": 1.153364374,
+      "weeks_of_traffic": 13.55387089
+    },
+    {
+      "users_per_arm": 30000,
+      "mde_pp": 1.143725357,
+      "weeks_of_traffic": 13.78359752
+    }
+  ]
+}

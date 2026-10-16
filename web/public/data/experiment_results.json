@@ -1,0 +1,127 @@
+{
+  "simulated": true,
+  "analysis": "intention-to-treat; denominator = all users randomized at KYC start in the arm",
+  "assignment_counts": {
+    "control": 8639,
+    "treatment": 8740
+  },
+  "arm_counts": {
+    "control": {
+      "randomized": 8639,
+      "kyc_completed": 4323,
+      "decisions": 3967,
+      "approvals": 2314,
+      "disbursed": 1983,
+      "early_delinquent": 134
+    },
+    "treatment": {
+      "randomized": 8740,
+      "kyc_completed": 4771,
+      "decisions": 4380,
+      "approvals": 2583,
+      "disbursed": 2202,
+      "early_delinquent": 148
+    }
+  },
+  "alpha": 0.05,
+  "primary": {
+    "metric": "KYC completion rate",
+    "control": {
+      "numerator": 4323,
+      "denominator": 8639,
+      "rate": 0.500405139484,
+      "wilson_ci": [
+        0.489863768485,
+        0.51094615034
+      ]
+    },
+    "treatment": {
+      "numerator": 4771,
+      "denominator": 8740,
+      "rate": 0.545881006865,
+      "wilson_ci": [
+        0.535424909449,
+        0.556296790192
+      ]
+    },
+    "diff_pp": 4.54758673813,
+    "diff_ci_pp": [
+      3.06285483286,
+      6.02950794003
+    ],
+    "relative_lift": 0.090878098151,
+    "relative_lift_ci": [
+      0.0602765004877,
+      0.122362916162
+    ],
+    "z": 6.00146261272,
+    "p_value": 1.95547972812e-09,
+    "significant": true,
+    "cross_check_statsmodels": {
+      "z": 6.00146261272,
+      "p_value": 1.95547972812e-09,
+      "diff_ci_pp": [
+        3.06285483286,
+        6.02950794003
+      ],
+      "relative_lift_ci": [
+        0.0602765004877,
+        0.122362916162
+      ]
+    }
+  },
+  "secondary": {
+    "metric": "disbursal share of randomized users",
+    "control": {
+      "numerator": 1983,
+      "denominator": 8639,
+      "rate": 0.229540456071,
+      "wilson_ci": [
+        0.220793920322,
+        0.238527412568
+      ]
+    },
+    "treatment": {
+      "numerator": 2202,
+      "denominator": 8740,
+      "rate": 0.251945080092,
+      "wilson_ci": [
+        0.242953924968,
+        0.26115419268
+      ]
+    },
+    "diff_pp": 2.24046240202,
+    "diff_ci_pp": [
+      0.969217903383,
+      3.51053973153
+    ],
+    "relative_lift": 0.0976064280942,
+    "relative_lift_ci": [
+      0.0410606952941,
+      0.157223470677
+    ],
+    "z": 3.45383458623,
+    "p_value": 0.00055267625408,
+    "significant": true,
+    "cross_check_statsmodels": {
+      "z": 3.45383458623,
+      "p_value": 0.00055267625408,
+      "diff_ci_pp": [
+        0.969217903383,
+        3.51053973153
+      ],
+      "relative_lift_ci": [
+        0.0410606952941,
+        0.157223470677
+      ]
+    }
+  },
+  "ground_truth_comparison": {
+    "primary_true_diff_pp": 4.75796714307,
+    "primary_true_inside_ci": true,
+    "primary_estimate_minus_truth_pp": -0.210380404945,
+    "primary_true_relative_lift": 0.0956731613908,
+    "secondary_true_diff_pp": 1.63813592364,
+    "secondary_true_inside_ci": true
+  }
+}

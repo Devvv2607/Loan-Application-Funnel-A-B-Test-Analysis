@@ -1,0 +1,233 @@
+{
+  "simulated": true,
+  "source": "config/simulation.yaml",
+  "parameters": [
+    {
+      "parameter": "population.total_users",
+      "value": "50000",
+      "rationale": "project brief: ~50k users across both periods"
+    },
+    {
+      "parameter": "population.dow_traffic_weights",
+      "value": "[1.10, 1.08, 1.05, 1.02, 0.95, 0.85, 0.80]",
+      "rationale": "Relative daily traffic Mon..Sun: loan applications peak early in the week and dip at weekends."
+    },
+    {
+      "parameter": "segment_mix.device",
+      "value": "{android: 0.62, ios: 0.18, web: 0.2}",
+      "rationale": "mobile-first lender; Android dominates the mass market"
+    },
+    {
+      "parameter": "segment_mix.channel",
+      "value": "{organic: 0.35, paid_social: 0.3, referral: 0.15, partner: 0.2}",
+      "rationale": "organic largest; paid social a big but low-intent acquisition source"
+    },
+    {
+      "parameter": "segment_mix.city_tier",
+      "value": "{'1': 0.4, '2': 0.35, '3': 0.25}",
+      "rationale": "tier 1 metros largest, long tail in tier 2/3 towns"
+    },
+    {
+      "parameter": "stages.kyc_started",
+      "value": "0.72",
+      "rationale": "most applicants who fill the form continue to identity checks"
+    },
+    {
+      "parameter": "stages.kyc_completed",
+      "value": "0.55",
+      "rationale": "document upload + selfie + bank verification is the heaviest step"
+    },
+    {
+      "parameter": "stages.decision_made",
+      "value": "0.92",
+      "rationale": "a few KYC completers abandon before the bureau pull / decision"
+    },
+    {
+      "parameter": "stages.approved",
+      "value": "0.62",
+      "rationale": "share of credit decisions that are approvals (thin-file applicants declined)"
+    },
+    {
+      "parameter": "stages.loan_disbursed",
+      "value": "0.85",
+      "rationale": "some approved applicants reject the offer (rate, amount, cold feet)"
+    },
+    {
+      "parameter": "stages.dpd30_first_emi",
+      "value": "0.06",
+      "rationale": "early delinquency on first EMI for a near-prime digital book"
+    },
+    {
+      "parameter": "segment_effects",
+      "value": "{device: {ios: {kyc_completed: 0.1, dpd30_first_emi: -0.2}, web: {kyc_started: -0.1,\n      kyc_completed: -0.4}}, channel: {paid_social: {kyc_started: -0.3, kyc_completed: -0.2,\n      approved: -0.25, dpd30_first_emi: 0.2}, referral: {kyc_started: 0.2, kyc_completed: 0.15,\n      approved: 0.15}, partner: {kyc_started: 0.1, approved: 0.1}}, city_tier: {'2': {\n      kyc_completed: -0.1, approved: -0.1, dpd30_first_emi: 0.1}, '3': {kyc_completed: -0.25,\n      approved: -0.25, dpd30_first_emi: 0.25}}}",
+      "rationale": "log-odds shifts by stage; omitted = 0"
+    },
+    {
+      "parameter": "segment_effects.device.ios",
+      "value": "{kyc_completed: 0.10, dpd30_first_emi: -0.20}",
+      "rationale": "better cameras/NFC; slightly more affluent users"
+    },
+    {
+      "parameter": "segment_effects.device.web",
+      "value": "{kyc_started: -0.10, kyc_completed: -0.40}",
+      "rationale": "document capture on desktop is awkward"
+    },
+    {
+      "parameter": "segment_effects.channel.paid_social",
+      "value": "{kyc_started: -0.30, kyc_completed: -0.20, approved: -0.25, dpd30_first_emi: 0.20}",
+      "rationale": "low-intent, riskier traffic"
+    },
+    {
+      "parameter": "segment_effects.channel.referral",
+      "value": "{kyc_started: 0.20, kyc_completed: 0.15, approved: 0.15}",
+      "rationale": "vouched-for, high-intent users"
+    },
+    {
+      "parameter": "segment_effects.channel.partner",
+      "value": "{kyc_started: 0.10, approved: 0.10}",
+      "rationale": "pre-screened by partner merchants"
+    },
+    {
+      "parameter": "segment_effects.city_tier.2",
+      "value": "{kyc_completed: -0.10, approved: -0.10, dpd30_first_emi: 0.10}",
+      "rationale": "slightly weaker connectivity and credit files"
+    },
+    {
+      "parameter": "segment_effects.city_tier.3",
+      "value": "{kyc_completed: -0.25, approved: -0.25, dpd30_first_emi: 0.25}",
+      "rationale": "thin files, patchier documents"
+    },
+    {
+      "parameter": "seasonality.weekend_logit_shift",
+      "value": "{kyc_started: -0.1, kyc_completed: -0.1}",
+      "rationale": "weekend applicants are browsers more than committed borrowers"
+    },
+    {
+      "parameter": "treatment.kyc_completed_logit_shift",
+      "value": "0.17",
+      "rationale": "modest true uplift (~4pp at the baseline rate)"
+    },
+    {
+      "parameter": "treatment.segment_logit_shift_modifiers",
+      "value": "{device: {web: 0.1, ios: -0.05}, city_tier: {'3': 0.05}}",
+      "rationale": "mild heterogeneity on top of the overall shift"
+    },
+    {
+      "parameter": "treatment.segment_logit_shift_modifiers.device",
+      "value": "{web: 0.10, ios: -0.05}",
+      "rationale": "simplification helps most where capture was hardest"
+    },
+    {
+      "parameter": "treatment.segment_logit_shift_modifiers.city_tier",
+      "value": "{\"3\": 0.05}",
+      "rationale": "fewer documents helps thin-file applicants a bit"
+    },
+    {
+      "parameter": "treatment.marginal_logit_shift",
+      "value": "{approved: -0.6, dpd30_first_emi: 0.55}",
+      "rationale": "Selection effect: \"marginal\" applicants complete only because KYC got easier."
+    },
+    {
+      "parameter": "treatment.marginal_logit_shift.approved",
+      "value": "-0.60",
+      "rationale": "weaker profiles -> declined more often"
+    },
+    {
+      "parameter": "treatment.marginal_logit_shift.dpd30_first_emi",
+      "value": "0.55",
+      "rationale": "and slightly more likely to miss the first EMI"
+    },
+    {
+      "parameter": "treatment.kyc_duration_multiplier",
+      "value": "0.75",
+      "rationale": "simplified flow is faster to complete"
+    },
+    {
+      "parameter": "retries.kyc_retry_prob",
+      "value": "0.12",
+      "rationale": "users who abandon mid-KYC and restart (lost document, timeout)"
+    },
+    {
+      "parameter": "retries.second_retry_prob",
+      "value": "0.25",
+      "rationale": "some of those retry twice"
+    },
+    {
+      "parameter": "retries.retry_gap_minutes_median",
+      "value": "90",
+      "rationale": "minutes to hours later, sometimes next day"
+    },
+    {
+      "parameter": "retries.retry_gap_sigma",
+      "value": "1.2",
+      "rationale": "wide spread: some retry within minutes, some the next day"
+    },
+    {
+      "parameter": "retries.retry_gap_minutes_min",
+      "value": "10",
+      "rationale": "always well outside the 5-second dedup window"
+    },
+    {
+      "parameter": "timing",
+      "value": "{signup_to_application_minutes: {median: 2, sigma: 0.6}, application_to_kyc_start_minutes: {\n    median: 15, sigma: 1.0}, kyc_start_to_complete_minutes: {median: 40, sigma: 1.1},\n  kyc_complete_to_decision_minutes: {median: 360, sigma: 0.8}, decision_to_disbursal_minutes: {\n    median: 1200, sigma: 0.7}}",
+      "rationale": "log-normal gaps between consecutive stages"
+    },
+    {
+      "parameter": "loans.amount_median",
+      "value": "40000",
+      "rationale": "small-ticket personal loan (fictional currency units)"
+    },
+    {
+      "parameter": "loans.amount_sigma",
+      "value": "0.6",
+      "rationale": "right-skewed ticket sizes, most between ~half and ~double the median"
+    },
+    {
+      "parameter": "loans.first_emi_due_days",
+      "value": "30",
+      "rationale": "monthly EMI"
+    },
+    {
+      "parameter": "data_quality",
+      "value": "{duplicate_event_rate: 0.01, duplicate_max_offset_seconds: 4, out_of_order_rate: 0.005,\n  null_device_rate: 0.005, missing_step_users: 60}",
+      "rationale": "injected issues, so cleaning is real work"
+    },
+    {
+      "parameter": "data_quality.duplicate_event_rate",
+      "value": "0.01",
+      "rationale": "client double-fires"
+    },
+    {
+      "parameter": "data_quality.duplicate_max_offset_seconds",
+      "value": "4",
+      "rationale": "inside the 5s dedup tolerance"
+    },
+    {
+      "parameter": "data_quality.out_of_order_rate",
+      "value": "0.005",
+      "rationale": "device clock skew logs a later stage before an earlier one"
+    },
+    {
+      "parameter": "data_quality.null_device_rate",
+      "value": "0.005",
+      "rationale": "user-agent parsing failures"
+    },
+    {
+      "parameter": "data_quality.missing_step_users",
+      "value": "60",
+      "rationale": "pipeline drops an intermediate stage event"
+    },
+    {
+      "parameter": "broken_experiment.treatment_bot_filter_drop_rate",
+      "value": "0.08",
+      "rationale": "drops ~8% of treatment users -> roughly a 52/48 split"
+    }
+  ],
+  "periods": {
+    "start_date": "2026-03-02",
+    "pre_period_weeks": 4,
+    "experiment_weeks": 4
+  },
+  "total_users": 50000,
+  "seed": 42
+}

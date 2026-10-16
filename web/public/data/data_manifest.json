@@ -1,0 +1,22 @@
+{
+  "simulated": true,
+  "seed": 42,
+  "raw_dir": "data/raw",
+  "files": {
+    "users.csv": {
+      "table": "raw_users",
+      "rows": 50000,
+      "sha256": "ca08903c551248698d2d89c04bc00093ee5a51425f464505d2e2209e86652a6d"
+    },
+    "events.csv": {
+      "table": "raw_events",
+      "rows": 133476,
+      "sha256": "8028e5e13211d19e32cc735c8a628306835e2cf8e9fd3f19fb3166f0bf6a5648"
+    },
+    "loans.csv": {
+      "table": "raw_loans",
+      "rows": 8200,
+      "sha256": "df5b2baa6dc46a8a7d4b2384517b8f9187f1b502692d7b33a12ee6ed7d12c6b5"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "simulated": true,
+  "source": "outputs/stage_timing.csv",
+  "rows": [
+    {
+      "device": "all",
+      "transition": "application_started\u2192kyc_started",
+      "users": 17064,
+      "median_minutes": 15.075,
+      "p90_minutes": 54.0
+    },
+    {
+      "device": "all",
+      "transition": "decision_made\u2192loan_disbursed",
+      "users": 3852,
+      "median_minutes": 1196.016667,
+      "p90_minutes": 2911.546667
+    },
+    {
+      "device": "all",
+      "transition": "kyc_completed\u2192decision_made",
+      "users": 7716,
+      "median_minutes": 360.7166667,
+      "p90_minutes": 1023.616667
+    },
+    {
+      "device": "all",
+      "transition": "kyc_started\u2192kyc_completed",
+      "users": 8380,
+      "median_minutes": 46.225,
+      "p90_minutes": 229.705
+    },
+    {
+      "device": "android",
+      "transition": "application_started\u2192kyc_started",
+      "users": 10585,
+      "median_minutes": 15.11666667,
+      "p90_minutes": 54.02
+    },
+    {
+      "device": "android",
+      "transition": "decision_made\u2192loan_disbursed",
+      "users": 2448,
+      "median_minutes": 1178.208333,
+      "p90_minutes": 2892.756667
+    },
+    {
+      "device": "android",
+      "transition": "kyc_completed\u2192decision_made",
+      "users": 4931,
+      "median_minutes": 357.75,
+      "p90_minutes": 1000.15
+    },
+    {
+      "device": "android",
+      "transition": "kyc_started\u2192kyc_completed",
+      "users": 5358,
+      "median_minutes": 45.9,
+      "p90_minutes": 228.6533333
+    },
+    {
+      "device": "ios",
+      "transition": "application_started\u2192kyc_started",
+      "users": 3092,
+      "median_minutes": 15.14166667,
+      "p90_minutes": 53.81
+    },
+    {
+      "device": "ios",
+      "transition": "decision_made\u2192loan_disbursed",
+      "users": 734,
+      "median_minutes": 1197.841667,
+      "p90_minutes": 2906.575
+    },
+    {
+      "device": "ios",
+      "transition": "kyc_completed\u2192decision_made",
+      "users": 1487,
+      "median_minutes": 367.8666667,
+      "p90_minutes": 1012.01
+    },
+    {
+      "device": "ios",
+      "transition": "kyc_started\u2192kyc_completed",
+      "users": 1629,
+      "median_minutes": 45.01666667,
+      "p90_minutes": 229.54
+    },
+    {
+      "device": "unknown",
+      "transition": "application_started\u2192kyc_started",
+      "users": 84,
+      "median_minutes": 13.65833333,
+      "p90_minutes": 51.47333333
+    },
+    {
+      "device": "unknown",
+      "transition": "decision_made\u2192loan_disbursed",
+      "users": 22,
+      "median_minutes": 1199.4,
+      "p90_minutes": 2550.785
+    },
+    {
+      "device": "unknown",
+      "transition": "kyc_completed\u2192decision_made",
+      "users": 39,
+      "median_minutes": 410.5166667,
+      "p90_minutes": 1257.983333
+    },
+    {
+      "device": "unknown",
+      "transition": "kyc_started\u2192kyc_completed",
+      "users": 43,
+      "median_minutes": 59.5,
+      "p90_minutes": 230.3566667
+    },
+    {
+      "device": "web",
+      "transition": "application_started\u2192kyc_started",
+      "users": 3303,
+      "median_minutes": 14.9,
+      "p90_minutes": 54.09333333
+    },
+    {
+      "device": "web",
+      "transition": "decision_made\u2192loan_disbursed",
+      "users": 648,
+      "median_minutes": 1261.775,
+      "p90_minutes": 3071.226667
+    },
+    {
+      "device": "web",
+      "transition": "kyc_completed\u2192decision_made",
+      "users": 1259,
+      "median_minutes": 362.1,
+      "p90_minutes": 1091.696667
+    },
+    {
+      "device": "web",
+      "transition": "kyc_started\u2192kyc_completed",
+      "users": 1350,
+      "median_minutes": 48.26666667,
+      "p90_minutes": 235.625
+    }
+  ]
+}

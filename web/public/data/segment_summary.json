@@ -1,0 +1,13 @@
+{
+  "simulated": true,
+  "label": "exploratory",
+  "correction": "Holm across all segment tests",
+  "segments_tested": 11,
+  "significant_after_holm": 9,
+  "segments_with_known_truth": 10,
+  "true_effect_inside_ci": 10,
+  "largest_estimate": {
+    "segment": "device=web",
+    "diff_pp": 7.55355424802
+  }
+}

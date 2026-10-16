@@ -1,0 +1,90 @@
+{
+  "simulated": true,
+  "source": "config/experiment_brief.yaml",
+  "brief": {
+    "hypothesis": "Replacing the current document-heavy KYC flow with a simplified flow increases the KYC completion rate of applicants who reach KYC, without an unacceptable increase in early-delinquent loans.",
+    "unit_of_randomization": "user, assigned 50/50 by seeded hash of user_id at their first kyc_started event in the experiment period",
+    "analysis_population": "intention-to-treat; every randomized user counts in their assigned arm for every metric",
+    "experiment_weeks": 4,
+    "primary_metric": {
+      "name": "KYC completion rate",
+      "numerator": "randomized users who complete KYC",
+      "denominator": "all users randomized into that arm at KYC start",
+      "test": "two-proportion z-test, two-sided",
+      "alpha": 0.05,
+      "power": 0.8,
+      "mde_pp": 3.0,
+      "mde_rationale": "A 3pp gain is the smallest lift that justifies the engineering, vendor and compliance cost of maintaining a second KYC flow."
+    },
+    "secondary_metrics": [
+      {
+        "name": "disbursal share of randomized users",
+        "numerator": "randomized users with a disbursed loan",
+        "denominator": "all users randomized into that arm at KYC start",
+        "purpose": "does the KYC gain survive the credit decision and offer acceptance?"
+      }
+    ],
+    "guardrails": {
+      "delinquent_per_1000_randomized": {
+        "role": "decision",
+        "name": "early-delinquent loans per 1,000 randomized users",
+        "numerator": "disbursed loans 30+ days past due on the first EMI",
+        "denominator": "all users randomized into that arm at KYC start (x 1,000)",
+        "direction": "higher_is_worse",
+        "margin": 2.1,
+        "margin_unit": "early-delinquent loans per 1,000 randomized users",
+        "margin_derivation": {
+          "formula": "margin = MDE x P(loan | KYC completed, control) x 1000 x g / (g + l)",
+          "inputs": {
+            "business_mde_pp": 3.0,
+            "control_decision_given_kyc_completed": 0.92,
+            "control_approval_given_decision": 0.593454,
+            "control_disbursal_given_approval": 0.85,
+            "control_loan_given_kyc_completed": 0.464081,
+            "avg_loan_amount": 40000,
+            "net_profit_good_loan_pct": 8.0,
+            "loss_early_delinquent_loan_pct": 45.0,
+            "g_profit_per_good_loan": 3200.0,
+            "l_loss_per_delinquent_loan": 18000.0
+          },
+          "extra_loans_per_1000_at_mde": 13.9224,
+          "break_even_share_of_extra_loans": 0.150943,
+          "source_of_baseline_rates": "control-path parameters in simulation.yaml (treatment block excluded)"
+        },
+        "margin_rationale": "At the 3pp business MDE, the simpler flow adds about 13.9 disbursed loans per 1,000 randomized users. Each early-delinquent loan forgoes the profit of a good loan and loses about 45% of principal, so the extra loans stay profitable only while no more than 15.1% of them go early-delinquent. The margin is that break-even count. Note the per-user count rises mechanically with conversion: more loans means more delinquent loans even at an unchanged per-loan rate."
+      },
+      "early_delinquency_rate": {
+        "role": "diagnostic",
+        "name": "early delinquency rate among disbursed loans",
+        "numerator": "disbursed loans 30+ days past due on the first EMI",
+        "denominator": "disbursed loans in that arm (post-randomization; not a randomized comparison)",
+        "direction": "higher_is_worse",
+        "margin_pp": 1.5,
+        "margin_rationale": "Roughly a quarter of the ~6% baseline; beyond this the credit policy team would re-price. Diagnostic only: the treatment changes who gets a loan, so arms hold different borrower mixes."
+      },
+      "approval_rate": {
+        "role": "diagnostic",
+        "name": "approval rate among credit decisions",
+        "numerator": "approved decisions",
+        "denominator": "credit decisions in that arm (post-randomization; not a randomized comparison)",
+        "direction": "lower_is_worse",
+        "margin_pp": -3.0,
+        "margin_rationale": "A drop beyond 3pp would signal the simplified flow is filling the decision queue with applicants underwriting rejects, raising bureau and ops cost per loan. Diagnostic only."
+      }
+    },
+    "guardrail_test": "one-sided non-inferiority at alpha 0.05 (one-sided 95% confidence bound)",
+    "guardrail_pass_rule": {
+      "pass": "the one-sided 95% bound lies inside the margin",
+      "fail": "the point estimate lies beyond the margin",
+      "inconclusive": "the point estimate is inside the margin but the bound crosses it",
+      "note": "not statistically significant never means credit quality preserved"
+    },
+    "decision_rule": {
+      "decision_guardrail": "delinquent_per_1000_randomized",
+      "ship": "primary is significant (two-sided p < alpha) and positive AND the decision guardrail passes",
+      "iterate": "primary is significant and positive AND the decision guardrail fails or is inconclusive",
+      "dont_ship": "primary is not significant, or is significant and negative",
+      "diagnostics": "reported alongside the decision; they do not change it"
+    }
+  }
+}

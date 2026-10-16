@@ -1,0 +1,56 @@
+{
+  "simulated": true,
+  "source": "outputs/funnel_overall.csv",
+  "rows": [
+    {
+      "stage_order": 1,
+      "stage": "application_started",
+      "users": 25095,
+      "prev_users": null,
+      "dropped": null,
+      "conversion_from_prev": null,
+      "dropoff_share": null,
+      "conversion_from_start": 1.0
+    },
+    {
+      "stage_order": 2,
+      "stage": "kyc_started",
+      "users": 17412,
+      "prev_users": 25095.0,
+      "dropped": 7683.0,
+      "conversion_from_prev": 0.6938433951,
+      "dropoff_share": 0.3641059665,
+      "conversion_from_start": 0.6938433951
+    },
+    {
+      "stage_order": 3,
+      "stage": "kyc_completed",
+      "users": 8649,
+      "prev_users": 17412.0,
+      "dropped": 8763.0,
+      "conversion_from_prev": 0.4967263956,
+      "dropoff_share": 0.415288375,
+      "conversion_from_start": 0.3446503288
+    },
+    {
+      "stage_order": 4,
+      "stage": "decision_made",
+      "users": 7966,
+      "prev_users": 8649.0,
+      "dropped": 683.0,
+      "conversion_from_prev": 0.9210313331,
+      "dropoff_share": 0.03236813421,
+      "conversion_from_start": 0.3174337517
+    },
+    {
+      "stage_order": 5,
+      "stage": "loan_disbursed",
+      "users": 3994,
+      "prev_users": 7966.0,
+      "dropped": 3972.0,
+      "conversion_from_prev": 0.5013808687,
+      "dropoff_share": 0.1882375243,
+      "conversion_from_start": 0.1591552102
+    }
+  ]
+}

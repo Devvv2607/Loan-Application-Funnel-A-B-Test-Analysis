@@ -1,0 +1,21 @@
+{
+  "simulated": true,
+  "frozen_at_utc": "2026-10-16T09:41:50Z",
+  "sha256": "5c98d4eec70fc47d580c36f15e8c831fa2121d6a68983fde2bd0748c8d030ccf",
+  "decision_guardrail_margin": 2.1,
+  "derivation": {
+    "baseline": {
+      "kyc_completion_rate": 0.4973147196,
+      "decision_given_kyc_completed": 0.92,
+      "approval_given_decision": 0.5934542575,
+      "disbursal_given_approval": 0.85,
+      "loan_given_kyc_completed": 0.4640812294
+    },
+    "business_mde_pp": 3.0,
+    "profit_good_loan": 3200.0,
+    "loss_delinquent_loan": 18000.0,
+    "extra_loans_per_1000_at_mde": 13.9224368813,
+    "break_even_share": 0.1509433962,
+    "margin": 2.1
+  }
+}
