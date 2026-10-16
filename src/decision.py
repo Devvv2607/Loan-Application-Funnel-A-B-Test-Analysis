@@ -85,9 +85,9 @@ def memo(brief, res, grd, dec, funnel, val) -> str:
                       f"of KYC traffic. The per-loan early delinquency rate shows no detectable deterioration "
                       f"({gb['difference']:+.2f} pp), so the open question is mostly precision: the guardrail's 95% "
                       f"CI spans {ga['ci95'][1] - ga['ci95'][0]:.1f} per 1,000, wider than the {ga['margin']} margin. "
-                      f"A longer test alone is impractical at current traffic, so the next step is a staged "
-                      f"exposure with cohort-level delinquency monitoring while a tighter variant (keeping one "
-                      f"check for thin-file applicants) is prepared for a re-test."]
+                      f"A longer test is impractical at current traffic, so the guardrail is expected to be resolved "
+                      f"by re-testing a tighter variant (one check kept for thin-file applicants) under a new "
+                      f"pre-registered brief."]
     lines += [
         "",
         "## Risks",
@@ -104,13 +104,17 @@ def memo(brief, res, grd, dec, funnel, val) -> str:
     if dec["decision"] == "ship":
         lines.append("- Stage exposure 10% → 50% → 100%, two weeks per stage.")
     elif dec["decision"] == "iterate":
-        lines.append("- Do not roll out to everyone. Keep a controlled 10% → 50% exposure as an extended test until "
-                     "the decision guardrail resolves.")
+        lines += [
+            "- Do not roll out to everyone. A staged 10% → 50% exposure limits credit risk while matured delinquency "
+            "is monitored per cohort; it is a risk control, not a test, and is not expected to resolve the guardrail.",
+            "- Resolve the guardrail by re-testing the tighter variant (one check kept for thin-file applicants) "
+            "under a new pre-registered brief.",
+        ]
     else:
         lines.append("- Do not roll out. Revisit the KYC design.")
     lines += [
-        "- Monitor early-delinquent loans per 1,000 KYC entrants and the per-loan rate at 30 / 60 / 90 days "
-        "after disbursal for each exposure cohort.",
+        "- Monitor matured early-delinquent loans per 1,000 KYC entrants and the per-loan rate at 30 / 60 / 90 days "
+        "after disbursal for each exposure cohort, against the rollback triggers below.",
         f"- **Rollback triggers:** the early-delinquent loans per 1,000 estimate exceeds the +{ga['margin']} margin "
         f"(guardrail fails) at any monitoring point, or the KYC completion gain's 95% CI falls below zero.",
         "",

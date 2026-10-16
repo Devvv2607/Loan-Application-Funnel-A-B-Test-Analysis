@@ -169,7 +169,7 @@ a:hover {
 @media print {
   @page {
     size: A4;
-    margin: 14mm;
+    margin: 12mm;
   }
   :root {
     --bg: #ffffff;
@@ -190,8 +190,8 @@ a:hover {
   }
   /* The memo article carries screen-size Tailwind classes; override them for print. */
   .memo {
-    font-size: 9.6pt !important;
-    line-height: 1.36 !important;
+    font-size: 9.3pt !important;
+    line-height: 1.32 !important;
   }
   .memo > * + * {
     margin-top: 4pt !important;

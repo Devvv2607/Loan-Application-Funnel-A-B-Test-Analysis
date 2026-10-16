@@ -23,7 +23,7 @@ Why the per-user count rises while the per-loan rate does not: the treatment arm
 - ✓ Primary effect positive (+4.55 pp)
 - ✗ Decision guardrail passes non-inferiority (label: inconclusive)
 
-The conversion gain is real, but the data cannot yet rule out an increase in early-delinquent loans beyond the break-even margin. Resolving it at the observed estimate would need about 188,179 randomized users per arm (vs 8,639 now), roughly 86 weeks of KYC traffic. The per-loan early delinquency rate shows no detectable deterioration (-0.04 pp), so the open question is mostly precision: the guardrail's 95% CI spans 7.6 per 1,000, wider than the 2.1 margin. A longer test alone is impractical at current traffic, so the next step is a staged exposure with cohort-level delinquency monitoring while a tighter variant (keeping one check for thin-file applicants) is prepared for a re-test.
+The conversion gain is real, but the data cannot yet rule out an increase in early-delinquent loans beyond the break-even margin. Resolving it at the observed estimate would need about 188,179 randomized users per arm (vs 8,639 now), roughly 86 weeks of KYC traffic. The per-loan early delinquency rate shows no detectable deterioration (-0.04 pp), so the open question is mostly precision: the guardrail's 95% CI spans 7.6 per 1,000, wider than the 2.1 margin. A longer test is impractical at current traffic, so the guardrail is expected to be resolved by re-testing a tighter variant (one check kept for thin-file applicants) under a new pre-registered brief.
 
 ## Risks
 - **Selection effect:** the simpler flow admits marginal applicants with weaker credit profiles.
@@ -32,8 +32,9 @@ The conversion gain is real, but the data cannot yet rule out an increase in ear
 - **Simulated data:** results demonstrate the method. The true planted effect (+4.76 pp) lies inside the 95% CI; A/A false-positive rate 4.9%, CI coverage 95.4%.
 
 ## Rollout plan
-- Do not roll out to everyone. Keep a controlled 10% → 50% exposure as an extended test until the decision guardrail resolves.
-- Monitor early-delinquent loans per 1,000 KYC entrants and the per-loan rate at 30 / 60 / 90 days after disbursal for each exposure cohort.
+- Do not roll out to everyone. A staged 10% → 50% exposure limits credit risk while matured delinquency is monitored per cohort; it is a risk control, not a test, and is not expected to resolve the guardrail.
+- Resolve the guardrail by re-testing the tighter variant (one check kept for thin-file applicants) under a new pre-registered brief.
+- Monitor matured early-delinquent loans per 1,000 KYC entrants and the per-loan rate at 30 / 60 / 90 days after disbursal for each exposure cohort, against the rollback triggers below.
 - **Rollback triggers:** the early-delinquent loans per 1,000 estimate exceeds the +2.1 margin (guardrail fails) at any monitoring point, or the KYC completion gain's 95% CI falls below zero.
 
 *Analysis by Dev Mittal · every figure is computed by the pipeline and read from outputs/.*
