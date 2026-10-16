@@ -153,7 +153,7 @@ export default function SimulationPage() {
               </a>
             </li>
             <li>
-              <ExtLink href={site.github_url} label="GitHub repository" />
+              <ExtLink href={site.repo_url} label="GitHub repository" />
             </li>
           </ul>
         </Prose>

@@ -188,15 +188,30 @@ a:hover {
     padding: 0 !important;
     max-width: none !important;
   }
+  /* The memo article carries screen-size Tailwind classes; override them for print. */
+  .memo {
+    font-size: 9.6pt !important;
+    line-height: 1.36 !important;
+  }
+  .memo > * + * {
+    margin-top: 4pt !important;
+  }
   .memo h1 {
-    font-size: 17pt;
+    font-size: 15pt !important;
+    line-height: 1.2 !important;
   }
   .memo h2 {
-    font-size: 12pt;
-    margin-top: 8pt;
+    font-size: 11pt !important;
+    margin-top: 7pt !important;
   }
-  .memo p,
   .memo li {
-    margin: 2pt 0;
+    margin: 0 !important;
+  }
+  .memo ul > li + li {
+    margin-top: 1.5pt !important;
+  }
+  .memo blockquote {
+    padding: 4pt 6pt !important;
+    font-size: 9pt !important;
   }
 }

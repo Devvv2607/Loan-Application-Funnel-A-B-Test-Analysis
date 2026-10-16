@@ -10,7 +10,8 @@
     "test": "vitest run",
     "check-data": "node scripts/check-data.mjs",
     "serve": "node scripts/serve.mjs",
-    "e2e": "node scripts/e2e.mjs"
+    "e2e": "node scripts/e2e.mjs",
+    "print-memo": "node scripts/e2e-env.mjs scripts/print-memo.mjs"
   },
   "dependencies": {
     "lucide-react": "0.453.0",

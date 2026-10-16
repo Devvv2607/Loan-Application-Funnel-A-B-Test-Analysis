@@ -5,6 +5,7 @@ type Site = {
   author: string;
   published: string;
   last_updated: string;
+  repo_url: string | null;
   github_url: string | null;
   linkedin_url: string | null;
   live_url: string | null;
@@ -23,7 +24,8 @@ export default function Footer() {
         Published {site.published} · Last updated {site.last_updated}
       </p>
       <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-        <ExtLink href={site.github_url} label="Source code" />
+        <ExtLink href={site.repo_url} label="Source code" />
+        <ExtLink href={site.github_url} label="GitHub" />
         <ExtLink href={site.linkedin_url} label="LinkedIn" />
         <ExtLink href={site.live_url} label="Live site" />
       </p>

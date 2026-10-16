@@ -34,7 +34,7 @@ export default function Home() {
         <Link href="/funnel/">Read the funnel ↗</Link>
         <Link href="/experiment/">See the experiment ↗</Link>
         <Link href="/recommendation/">Read the recommendation ↗</Link>
-        <ExtLink href={site.github_url} label="Source code" />
+        <ExtLink href={site.repo_url} label="Source code" />
       </nav>
 
       <Section title="Coverage">
