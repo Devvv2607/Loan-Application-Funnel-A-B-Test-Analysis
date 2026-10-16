@@ -1,0 +1,148 @@
+{
+  "simulated": true,
+  "checks_total": 28,
+  "checks_passed": 28,
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "manifest hash matches users.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "manifest rows match table raw_users",
+      "passed": true,
+      "detail": "50000 vs 50000"
+    },
+    {
+      "check": "manifest hash matches events.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "manifest rows match table raw_events",
+      "passed": true,
+      "detail": "133476 vs 133476"
+    },
+    {
+      "check": "manifest hash matches loans.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "manifest rows match table raw_loans",
+      "passed": true,
+      "detail": "8200 vs 8200"
+    },
+    {
+      "check": "funnel_overall equals user_stage_flags (pre)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "funnel_overall.csv equals SQL table",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "funnel_summary start/end equal funnel counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "experiment tables equal assignment log",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "primary numerators equal SQL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "secondary numerators equal SQL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision guardrail numerators equal SQL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "assignment counts identical in srm.json",
+      "passed": true,
+      "detail": "{'control': 8639, 'treatment': 8740}"
+    },
+    {
+      "check": "assignment counts identical in guardrails.json",
+      "passed": true,
+      "detail": "{'control': 8639, 'treatment': 8740}"
+    },
+    {
+      "check": "assignment counts identical in power_analysis.json",
+      "passed": true,
+      "detail": "{'control': 8639, 'treatment': 8740}"
+    },
+    {
+      "check": "assignment counts identical in decision.json",
+      "passed": true,
+      "detail": "{'control': 8639, 'treatment': 8740}"
+    },
+    {
+      "check": "assignment counts identical in memo",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "brief present and unchanged since freeze",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "detected duplicates equal injected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "out-of-order detected equals injected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "legitimate retries kept equal ground truth",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "SRM passed on main data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "validation simulation aa_test passed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "validation simulation ci_coverage passed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "validation simulation srm_detection passed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "validation simulation peeking passed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "claims re-render to saved text",
+      "passed": true,
+      "detail": "20 claims"
+    }
+  ]
+}

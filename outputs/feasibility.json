@@ -1,0 +1,132 @@
+{
+  "simulated": true,
+  "generated_at_utc": "2026-10-16T09:41:52Z",
+  "plan": {
+    "total_users": 50000,
+    "pre_period_weeks": 4,
+    "experiment_weeks": 4,
+    "users_per_week": 6250.0,
+    "expected_kyc_start_share": 0.701217992,
+    "expected_randomized_users_per_arm": 8765.224900282,
+    "expected_disbursed_loans_per_arm": {
+      "control": 2022.9650536677,
+      "treatment": 2166.5513515466
+    },
+    "alpha": 0.05,
+    "power": 0.8,
+    "margins_source": "config/experiment_brief.yaml (frozen)"
+  },
+  "primary_kyc_completion": {
+    "mde_pp_cohens_h": 2.1155467361,
+    "mde_pp_closed_form": 2.1159287732,
+    "baseline_kyc_completion_rate": 0.4973147196,
+    "business_mde_pp": 3.0,
+    "detectable_at_business_mde": true
+  },
+  "secondary_disbursal_share": {
+    "mde_pp_cohens_h": 1.8066596738,
+    "mde_pp_closed_form": 1.7830814124,
+    "baseline_disbursal_share": 0.2307944265
+  },
+  "guardrails_assuming_no_true_difference": {
+    "delinquent_per_1000_randomized": {
+      "role": "decision",
+      "unit": "per 1,000 randomized users",
+      "margin": 2.1,
+      "control": 15.2846059689,
+      "treatment": 15.2846059689,
+      "expected_difference": 0.0,
+      "expected_se": 1.8531729536,
+      "expected_one_sided_bound": 3.0481982541,
+      "expected_bound_inside_margin": false,
+      "probability_of_pass": 0.3044437787,
+      "randomized_users_per_arm_for_80pct_pass_probability": 42202
+    },
+    "early_delinquency_rate": {
+      "role": "diagnostic",
+      "unit": "pp",
+      "margin": 1.5,
+      "control": 6.6226061882,
+      "treatment": 6.6226061882,
+      "expected_difference": 0.0,
+      "expected_se": 0.7819088832,
+      "expected_one_sided_bound": 1.2861256624,
+      "expected_bound_inside_margin": true,
+      "probability_of_pass": 0.6077764933,
+      "randomized_users_per_arm_for_80pct_pass_probability": 14726
+    },
+    "approval_rate": {
+      "role": "diagnostic",
+      "unit": "pp",
+      "margin": -3.0,
+      "control": 59.3454257516,
+      "treatment": 59.3454257516,
+      "expected_difference": 0.0,
+      "expected_se": 1.0969131148,
+      "expected_one_sided_bound": -1.8042615153,
+      "expected_bound_inside_margin": true,
+      "probability_of_pass": 0.8621641465,
+      "randomized_users_per_arm_for_80pct_pass_probability": 7245
+    }
+  },
+  "guardrails_assuming_planned_selection_effect": {
+    "delinquent_per_1000_randomized": {
+      "role": "decision",
+      "unit": "per 1,000 randomized users",
+      "margin": 2.1,
+      "control": 15.2846059689,
+      "treatment": 17.1236606893,
+      "expected_difference": 1.8390547204,
+      "expected_se": 1.9071609643,
+      "expected_one_sided_bound": 4.9760553497,
+      "expected_bound_inside_margin": false,
+      "probability_of_pass": 0.0657734647,
+      "randomized_users_per_arm_for_80pct_pass_probability": 2894724
+    },
+    "early_delinquency_rate": {
+      "role": "diagnostic",
+      "unit": "pp",
+      "margin": 1.5,
+      "control": 6.6226061882,
+      "treatment": 6.9277258049,
+      "expected_difference": 0.3051196167,
+      "expected_se": 0.7767219503,
+      "expected_one_sided_bound": 1.5827135338,
+      "expected_bound_inside_margin": false,
+      "probability_of_pass": 0.4575965835,
+      "randomized_users_per_arm_for_80pct_pass_probability": 22899
+    },
+    "approval_rate": {
+      "role": "diagnostic",
+      "unit": "pp",
+      "margin": -3.0,
+      "control": 59.3454257516,
+      "treatment": 58.0078585115,
+      "expected_difference": -1.3375672401,
+      "expected_se": 1.0751599232,
+      "expected_one_sided_bound": -3.1060479393,
+      "expected_bound_inside_margin": false,
+      "probability_of_pass": 0.4607142095,
+      "randomized_users_per_arm_for_80pct_pass_probability": 22667
+    }
+  },
+  "options_to_resolve_decision_guardrail": [
+    {
+      "assumption": "no_true_difference",
+      "decision_guardrail_users_per_arm_needed": 42202,
+      "experiment_weeks_needed_at_current_traffic": 20,
+      "total_users_needed_at_current_traffic": 150000
+    },
+    {
+      "assumption": "planned_selection_effect",
+      "decision_guardrail_users_per_arm_needed": 2894724,
+      "experiment_weeks_needed_at_current_traffic": 1322,
+      "total_users_needed_at_current_traffic": 8287500
+    }
+  ],
+  "issues": [
+    "Decision guardrail (delinquent loans per 1,000 randomized users) is not expected to resolve inside its margin under the 'no_true_difference' assumption.",
+    "Decision guardrail (delinquent loans per 1,000 randomized users) is not expected to resolve inside its margin under the 'planned_selection_effect' assumption."
+  ],
+  "feasible_as_planned": false
+}

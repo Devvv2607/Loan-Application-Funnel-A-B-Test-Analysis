@@ -1,0 +1,84 @@
+{
+  "simulated": true,
+  "period": "pre",
+  "users_started": 25095,
+  "users_disbursed": 3994,
+  "start_to_disbursal_conversion": 0.159155210201,
+  "total_dropped": 21101,
+  "largest_dropoff": {
+    "stage": "kyc_completed",
+    "transition": "KYC start \u2192 KYC completed",
+    "users_lost": 8763,
+    "dropoff_share": 0.415288374959,
+    "conversion_from_prev": 0.496726395589,
+    "users_entering": 17412
+  },
+  "lowest_conversion": {
+    "stage": "kyc_completed",
+    "transition": "KYC start \u2192 KYC completed",
+    "conversion_from_prev": 0.496726395589
+  },
+  "lenses_agree": true,
+  "segments_where_largest_dropoff_is_same_stage": 13,
+  "segments_total": 15,
+  "segments_where_it_differs": [
+    "channel=paid_social: Application \u2192 KYC start",
+    "device=unknown: Application \u2192 KYC start"
+  ],
+  "kyc_completion_rate_pre_period": {
+    "definition": "users who completed KYC / users who started KYC (pre-period funnel denominator)",
+    "value": 0.496726395589
+  },
+  "stage_timing_all_devices": {
+    "application_started\u2192kyc_started": {
+      "median_minutes": 15.075,
+      "p90_minutes": 54.0,
+      "users": 17064
+    },
+    "decision_made\u2192loan_disbursed": {
+      "median_minutes": 1196.01666667,
+      "p90_minutes": 2911.54666667,
+      "users": 3852
+    },
+    "kyc_completed\u2192decision_made": {
+      "median_minutes": 360.716666667,
+      "p90_minutes": 1023.61666667,
+      "users": 7716
+    },
+    "kyc_started\u2192kyc_completed": {
+      "median_minutes": 46.225,
+      "p90_minutes": 229.705,
+      "users": 8380
+    }
+  },
+  "transitions": [
+    {
+      "stage": "kyc_started",
+      "transition": "Application \u2192 KYC start",
+      "users_lost": 7683,
+      "dropoff_share": 0.364105966542,
+      "conversion_from_prev": 0.693843395099
+    },
+    {
+      "stage": "kyc_completed",
+      "transition": "KYC start \u2192 KYC completed",
+      "users_lost": 8763,
+      "dropoff_share": 0.415288374959,
+      "conversion_from_prev": 0.496726395589
+    },
+    {
+      "stage": "decision_made",
+      "transition": "KYC completed \u2192 credit decision",
+      "users_lost": 683,
+      "dropoff_share": 0.0323681342116,
+      "conversion_from_prev": 0.921031333102
+    },
+    {
+      "stage": "loan_disbursed",
+      "transition": "Credit decision \u2192 loan disbursed",
+      "users_lost": 3972,
+      "dropoff_share": 0.188237524288,
+      "conversion_from_prev": 0.501380868692
+    }
+  ]
+}

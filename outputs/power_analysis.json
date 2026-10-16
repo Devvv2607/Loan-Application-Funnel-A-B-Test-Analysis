@@ -1,0 +1,85 @@
+{
+  "simulated": true,
+  "inputs": {
+    "baseline_source": "pre-period KYC completion rate (users who started KYC)",
+    "baseline_kyc_completion_rate": 0.496726395589,
+    "mde_pp": 3.0,
+    "alpha": 0.05,
+    "power": 0.8,
+    "pre_period_kyc_starters": 17412,
+    "pre_period_kyc_completers": 8649
+  },
+  "required_users_per_arm": {
+    "statsmodels_cohens_h": 4356.76911125,
+    "closed_form": 4356.91120423,
+    "relative_difference": 3.26132374782e-05,
+    "used": 4357
+  },
+  "duration": {
+    "daily_kyc_starts": 621.857142857,
+    "weeks_required": 3,
+    "weeks_planned": 4,
+    "planned_covers_required": true
+  },
+  "experiment_assignment_counts": {
+    "control": 8639,
+    "treatment": 8740
+  },
+  "experiment_has_required_n": true,
+  "guardrail_precision": {
+    "delinquent_per_1000_randomized": {
+      "at_required_primary_n": {
+        "users_per_arm": 4357,
+        "expected_se": 2.60828634189,
+        "expected_bound_if_no_true_difference": 4.29024924959,
+        "margin": 2.1,
+        "bound_inside_margin": false
+      },
+      "at_actual_randomized_n": {
+        "users_per_arm": 8639,
+        "expected_se": 1.85232552013,
+        "expected_bound_if_no_true_difference": 3.04680435008,
+        "margin": 2.1,
+        "bound_inside_margin": false
+      },
+      "users_per_arm_for_80pct_power_if_no_true_difference": 41556,
+      "role": "decision"
+    },
+    "early_delinquency_rate": {
+      "at_required_primary_n": {
+        "users_per_arm": 4357,
+        "expected_se": 1.10752852238,
+        "expected_bound_if_no_true_difference": 1.82172230699,
+        "margin": 1.5,
+        "bound_inside_margin": false
+      },
+      "at_actual_randomized_n": {
+        "users_per_arm": 8639,
+        "expected_se": 0.786533024892,
+        "expected_bound_if_no_true_difference": 1.29373169871,
+        "margin": 1.5,
+        "bound_inside_margin": true
+      },
+      "users_per_arm_for_80pct_power_if_no_true_difference": 14686,
+      "role": "diagnostic"
+    },
+    "approval_rate": {
+      "at_required_primary_n": {
+        "users_per_arm": 4357,
+        "expected_se": 1.55506800219,
+        "expected_bound_if_no_true_difference": -2.55785924356,
+        "margin": -3.0,
+        "bound_inside_margin": true
+      },
+      "at_actual_randomized_n": {
+        "users_per_arm": 8639,
+        "expected_se": 1.10436193286,
+        "expected_bound_if_no_true_difference": -1.81651373074,
+        "margin": -3.0,
+        "bound_inside_margin": true
+      },
+      "users_per_arm_for_80pct_power_if_no_true_difference": 7238,
+      "role": "diagnostic"
+    }
+  }
+}

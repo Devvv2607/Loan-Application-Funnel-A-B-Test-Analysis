@@ -1,0 +1,138 @@
+# Claims registry. Every sentence the site, memo summary or README states as a
+# finding is a template here. Metrics reference "<file>:<dot.path>" in outputs/
+# (list indices allowed: diff_ci_pp.0). claims.py renders them and fails on any
+# missing metric, so no number is ever typed by hand. All data is simulated.
+
+claims:
+  - id: FUN-001
+    template: "Of {started:,} simulated applicants in the pre-period, {disbursed:,} reached loan disbursal ({conv:.1%} start-to-disbursal conversion)."
+    metrics:
+      started: funnel_summary.json:users_started
+      disbursed: funnel_summary.json:users_disbursed
+      conv: funnel_summary.json:start_to_disbursal_conversion
+
+  - id: FUN-002
+    template: "The largest drop-off is {stage}: {lost:,} applicants lost, {share:.1%} of all drop-off, with a KYC completion rate of {conv:.1%} among users who started KYC."
+    metrics:
+      stage: funnel_summary.json:largest_dropoff.transition
+      lost: funnel_summary.json:largest_dropoff.users_lost
+      share: funnel_summary.json:largest_dropoff.dropoff_share
+      conv: funnel_summary.json:largest_dropoff.conversion_from_prev
+
+  - id: FUN-003
+    template: "The same stage is the largest drop-off in {same} of {total} segments (device, channel, city tier, week)."
+    metrics:
+      same: funnel_summary.json:segments_where_largest_dropoff_is_same_stage
+      total: funnel_summary.json:segments_total
+
+  - id: FUN-004
+    template: "Median time from KYC start to KYC completion is {med:.0f} minutes; the slowest 10% take over {p90:.0f} minutes."
+    metrics:
+      med: "funnel_summary.json:stage_timing_all_devices.kyc_started→kyc_completed.median_minutes"
+      p90: "funnel_summary.json:stage_timing_all_devices.kyc_started→kyc_completed.p90_minutes"
+
+  - id: PWR-001
+    template: "Detecting a {mde:.1f} pp lift from a {base:.1%} baseline at alpha 0.05 and 80% power needs {n:,} users per arm (statsmodels {nh:,.1f} vs closed form {ncf:,.1f})."
+    metrics:
+      mde: power_analysis.json:inputs.mde_pp
+      base: power_analysis.json:inputs.baseline_kyc_completion_rate
+      n: power_analysis.json:required_users_per_arm.used
+      nh: power_analysis.json:required_users_per_arm.statsmodels_cohens_h
+      ncf: power_analysis.json:required_users_per_arm.closed_form
+
+  - id: PWR-002
+    template: "Before simulating, the feasibility check gave the decision guardrail only a {p:.0%} chance of passing even with no true harm; the plan was kept and reported, not tuned."
+    metrics:
+      p: feasibility.json:guardrails_assuming_no_true_difference.delinquent_per_1000_randomized.probability_of_pass
+
+  - id: EXP-001
+    template: "The simplified KYC flow raised the KYC completion rate by {diff:+.2f} pp (95% CI {lo:.2f} to {hi:.2f} pp; relative lift {lift:+.1%})."
+    metrics:
+      diff: experiment_results.json:primary.diff_pp
+      lo: experiment_results.json:primary.diff_ci_pp.0
+      hi: experiment_results.json:primary.diff_ci_pp.1
+      lift: experiment_results.json:primary.relative_lift
+
+  - id: EXP-002
+    template: "Assignment was balanced ({c:,} control vs {t:,} treatment; sample-ratio check p = {p:.2f})."
+    metrics:
+      c: srm.json:observed.control
+      t: srm.json:observed.treatment
+      p: srm.json:p_value
+
+  - id: EXP-003
+    template: "The true planted effect of {truth:+.2f} pp lies inside the 95% CI; the estimate is off by {err:+.2f} pp."
+    metrics:
+      truth: experiment_results.json:ground_truth_comparison.primary_true_diff_pp
+      err: experiment_results.json:ground_truth_comparison.primary_estimate_minus_truth_pp
+    requires:
+      experiment_results.json:ground_truth_comparison.primary_true_inside_ci: true
+
+  - id: EXP-004
+    template: "The share of randomized users reaching disbursal rose by {diff:+.2f} pp (95% CI {lo:.2f} to {hi:.2f} pp), so the gain survives the credit decision."
+    metrics:
+      diff: experiment_results.json:secondary.diff_pp
+      lo: experiment_results.json:secondary.diff_ci_pp.0
+      hi: experiment_results.json:secondary.diff_ci_pp.1
+
+  - id: EXP-005
+    template: "Exploratory: {sig} of {n} segment effects remain significant after Holm correction; segments do not drive the decision."
+    metrics:
+      sig: segment_summary.json:significant_after_holm
+      n: segment_summary.json:segments_tested
+
+  - id: GRD-001
+    template: "Early-delinquent loans per 1,000 randomized users moved by {diff:+.2f} (one-sided 95% bound {b:+.2f} vs a +{m} margin): {label}."
+    metrics:
+      diff: guardrails.json:guardrails.delinquent_per_1000_randomized.difference
+      b: guardrails.json:guardrails.delinquent_per_1000_randomized.one_sided_95_bound
+      m: guardrails.json:guardrails.delinquent_per_1000_randomized.margin
+      label: guardrails.json:guardrails.delinquent_per_1000_randomized.label
+
+  - id: GRD-002
+    template: "Per loan, the early delinquency rate changed by {d:+.2f} pp, but the treatment arm disbursed {lt:.1f} loans per 1,000 randomized users vs {lc:.1f}, so the per-user count rises mechanically."
+    metrics:
+      d: guardrails.json:guardrails.early_delinquency_rate.difference
+      lt: guardrails.json:per_loan_vs_per_user.loans_per_1000_randomized.treatment
+      lc: guardrails.json:per_loan_vs_per_user.loans_per_1000_randomized.control
+
+  - id: GRD-003
+    template: "Diagnostic guardrails: early delinquency rate {a}; approval rate {b} (reported, not decisive)."
+    metrics:
+      a: guardrails.json:guardrails.early_delinquency_rate.label
+      b: guardrails.json:guardrails.approval_rate.label
+
+  - id: VAL-001
+    template: "Across {n:,} simulated A/A tests the false-positive rate was {fpr:.1%} (target 5%)."
+    metrics:
+      n: validation_sims.json:aa_test.replications
+      fpr: validation_sims.json:aa_test.false_positive_rate
+
+  - id: VAL-002
+    template: "{cov:.1%} of 95% confidence intervals contained the true effect across {n} replications."
+    metrics:
+      cov: validation_sims.json:ci_coverage.coverage
+      n: validation_sims.json:ci_coverage.replications
+
+  - id: VAL-003
+    template: "The sample-ratio check flagged the deliberately broken dataset ({share:.1%} treatment, p = {p:.1e})."
+    metrics:
+      share: validation_sims.json:srm_detection.broken_dataset.treatment_share
+      p: validation_sims.json:srm_detection.broken_dataset.p_value
+
+  - id: VAL-004
+    template: "Peeking daily and stopping at the first p < 0.05 inflated the false-positive rate to {peek:.1%}, vs {fixed:.1%} at the fixed horizon."
+    metrics:
+      peek: validation_sims.json:peeking.false_positive_rate_peeking
+      fixed: validation_sims.json:peeking.false_positive_rate_fixed_horizon
+
+  - id: VAL-005
+    template: "Cleaning removed exactly the {dups:,} injected duplicates and kept all {retries:,} legitimate KYC retries."
+    metrics:
+      dups: data_quality_report.json:duplicates.detected_and_removed
+      retries: data_quality_report.json:legitimate_repeats_kept.total
+
+  - id: DEC-001
+    template: "Under the pre-registered rule the decision is {decision}."
+    metrics:
+      decision: decision.json:decision_label

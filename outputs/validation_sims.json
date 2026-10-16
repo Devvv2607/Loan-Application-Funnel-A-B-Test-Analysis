@@ -1,0 +1,53 @@
+{
+  "simulated": true,
+  "seed": 42,
+  "users_per_replication": 17379,
+  "aa_test": {
+    "replications": 1000,
+    "false_positive_rate": 0.049,
+    "expected": 0.05,
+    "acceptance_range": [
+      0.035,
+      0.065
+    ],
+    "passed": true
+  },
+  "ci_coverage": {
+    "replications": 500,
+    "true_effect_pp": 4.75796714307,
+    "coverage": 0.954,
+    "expected": 0.95,
+    "acceptance_range": [
+      0.92,
+      0.98
+    ],
+    "passed": true
+  },
+  "srm_detection": {
+    "broken_dataset": {
+      "bug": "bot filter applied to the treatment arm only",
+      "counts": {
+        "control": 8639,
+        "treatment": 8071
+      },
+      "treatment_share": 0.483004189108,
+      "chi2": 19.307241173,
+      "p_value": 1.11283513759e-05,
+      "flagged": true
+    },
+    "main_dataset": {
+      "p_value": 0.443592117922,
+      "flagged": false
+    },
+    "passed": true
+  },
+  "peeking": {
+    "replications": 1000,
+    "looks": 28,
+    "rule": "stop at the first daily look with p < 0.05",
+    "false_positive_rate_peeking": 0.247,
+    "false_positive_rate_fixed_horizon": 0.047,
+    "inflation_factor": 5.25531914894,
+    "passed": true
+  }
+}

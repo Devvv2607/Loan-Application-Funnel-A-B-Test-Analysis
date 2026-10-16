@@ -1,0 +1,6 @@
+stage_order,stage,users,prev_users,dropped,conversion_from_prev,dropoff_share,conversion_from_start
+1,application_started,25095,,,,,1
+2,kyc_started,17412,25095,7683,0.6938433951,0.3641059665,0.6938433951
+3,kyc_completed,8649,17412,8763,0.4967263956,0.415288375,0.3446503288
+4,decision_made,7966,8649,683,0.9210313331,0.03236813421,0.3174337517
+5,loan_disbursed,3994,7966,3972,0.5013808687,0.1882375243,0.1591552102

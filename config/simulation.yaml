@@ -1,0 +1,92 @@
+# Data-generating parameters (the planted ground truth). Every parameter has a
+# one-line rationale. Chosen once for plausibility; never tuned to hit outputs.
+# Probabilities are for the reference segment (android / organic / tier 1 on a
+# weekday); segment effects are additive shifts on the log-odds scale.
+
+population:
+  total_users: 50000                   # project brief: ~50k users across both periods
+  # Relative daily traffic Mon..Sun: loan applications peak early in the week and dip at weekends.
+  dow_traffic_weights: [1.10, 1.08, 1.05, 1.02, 0.95, 0.85, 0.80]
+
+segment_mix:
+  device:                              # mobile-first lender; Android dominates the mass market
+    android: 0.62
+    ios: 0.18
+    web: 0.20
+  channel:                             # organic largest; paid social a big but low-intent acquisition source
+    organic: 0.35
+    paid_social: 0.30
+    referral: 0.15
+    partner: 0.20
+  city_tier:                           # tier 1 metros largest, long tail in tier 2/3 towns
+    "1": 0.40
+    "2": 0.35
+    "3": 0.25
+
+stages:
+  # Reference-segment probability of moving from the previous stage to this one.
+  kyc_started: 0.72                    # most applicants who fill the form continue to identity checks
+  kyc_completed: 0.55                  # document upload + selfie + bank verification is the heaviest step
+  decision_made: 0.92                  # a few KYC completers abandon before the bureau pull / decision
+  approved: 0.62                       # share of credit decisions that are approvals (thin-file applicants declined)
+  loan_disbursed: 0.85                 # some approved applicants reject the offer (rate, amount, cold feet)
+  dpd30_first_emi: 0.06                # early delinquency on first EMI for a near-prime digital book
+
+segment_effects:                       # log-odds shifts by stage; omitted = 0
+  device:
+    ios: {kyc_completed: 0.10, dpd30_first_emi: -0.20}         # better cameras/NFC; slightly more affluent users
+    web: {kyc_started: -0.10, kyc_completed: -0.40}            # document capture on desktop is awkward
+  channel:
+    paid_social: {kyc_started: -0.30, kyc_completed: -0.20, approved: -0.25, dpd30_first_emi: 0.20}  # low-intent, riskier traffic
+    referral: {kyc_started: 0.20, kyc_completed: 0.15, approved: 0.15}   # vouched-for, high-intent users
+    partner: {kyc_started: 0.10, approved: 0.10}                         # pre-screened by partner merchants
+  city_tier:
+    "2": {kyc_completed: -0.10, approved: -0.10, dpd30_first_emi: 0.10}  # slightly weaker connectivity and credit files
+    "3": {kyc_completed: -0.25, approved: -0.25, dpd30_first_emi: 0.25}  # thin files, patchier documents
+
+seasonality:
+  weekend_logit_shift:                 # weekend applicants are browsers more than committed borrowers
+    kyc_started: -0.10
+    kyc_completed: -0.10
+
+treatment:
+  # Simplified KYC (fewer documents, auto-fill from DigiLocker-style pull).
+  kyc_completed_logit_shift: 0.17      # modest true uplift (~4pp at the baseline rate)
+  segment_logit_shift_modifiers:       # mild heterogeneity on top of the overall shift
+    device: {web: 0.10, ios: -0.05}    # simplification helps most where capture was hardest
+    city_tier: {"3": 0.05}             # fewer documents helps thin-file applicants a bit
+  # Selection effect: "marginal" applicants complete only because KYC got easier.
+  marginal_logit_shift:
+    approved: -0.60                    # weaker profiles -> declined more often
+    dpd30_first_emi: 0.55              # and slightly more likely to miss the first EMI
+  kyc_duration_multiplier: 0.75        # simplified flow is faster to complete
+
+retries:
+  kyc_retry_prob: 0.12                 # users who abandon mid-KYC and restart (lost document, timeout)
+  second_retry_prob: 0.25              # some of those retry twice
+  retry_gap_minutes_median: 90         # minutes to hours later, sometimes next day
+  retry_gap_sigma: 1.2                 # wide spread: some retry within minutes, some the next day
+  retry_gap_minutes_min: 10            # always well outside the 5-second dedup window
+
+timing:                                # log-normal gaps between consecutive stages
+  signup_to_application_minutes: {median: 2, sigma: 0.6}
+  application_to_kyc_start_minutes: {median: 15, sigma: 1.0}
+  kyc_start_to_complete_minutes: {median: 40, sigma: 1.1}
+  kyc_complete_to_decision_minutes: {median: 360, sigma: 0.8}
+  decision_to_disbursal_minutes: {median: 1200, sigma: 0.7}
+
+loans:
+  amount_median: 40000                 # small-ticket personal loan (fictional currency units)
+  amount_sigma: 0.6                    # right-skewed ticket sizes, most between ~half and ~double the median
+  first_emi_due_days: 30               # monthly EMI
+
+data_quality:                          # injected issues, so cleaning is real work
+  duplicate_event_rate: 0.01           # client double-fires
+  duplicate_max_offset_seconds: 4      # inside the 5s dedup tolerance
+  out_of_order_rate: 0.005             # device clock skew logs a later stage before an earlier one
+  null_device_rate: 0.005              # user-agent parsing failures
+  missing_step_users: 60               # pipeline drops an intermediate stage event
+
+broken_experiment:
+  # Validation-only dataset: a bot filter applied to the treatment arm only.
+  treatment_bot_filter_drop_rate: 0.08 # drops ~8% of treatment users -> roughly a 52/48 split

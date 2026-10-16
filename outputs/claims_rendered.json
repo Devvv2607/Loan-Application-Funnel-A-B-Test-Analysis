@@ -1,0 +1,409 @@
+{
+  "simulated": true,
+  "claims": [
+    {
+      "id": "FUN-001",
+      "text": "Of 25,095 simulated applicants in the pre-period, 3,994 reached loan disbursal (15.9% start-to-disbursal conversion).",
+      "template": "Of {started:,} simulated applicants in the pre-period, {disbursed:,} reached loan disbursal ({conv:.1%} start-to-disbursal conversion).",
+      "metrics": {
+        "started": {
+          "ref": "funnel_summary.json:users_started",
+          "value": 25095
+        },
+        "disbursed": {
+          "ref": "funnel_summary.json:users_disbursed",
+          "value": 3994
+        },
+        "conv": {
+          "ref": "funnel_summary.json:start_to_disbursal_conversion",
+          "value": 0.159155210201
+        }
+      },
+      "sources": [
+        "funnel_summary.json"
+      ]
+    },
+    {
+      "id": "FUN-002",
+      "text": "The largest drop-off is KYC start \u2192 KYC completed: 8,763 applicants lost, 41.5% of all drop-off, with a KYC completion rate of 49.7% among users who started KYC.",
+      "template": "The largest drop-off is {stage}: {lost:,} applicants lost, {share:.1%} of all drop-off, with a KYC completion rate of {conv:.1%} among users who started KYC.",
+      "metrics": {
+        "stage": {
+          "ref": "funnel_summary.json:largest_dropoff.transition",
+          "value": "KYC start \u2192 KYC completed"
+        },
+        "lost": {
+          "ref": "funnel_summary.json:largest_dropoff.users_lost",
+          "value": 8763
+        },
+        "share": {
+          "ref": "funnel_summary.json:largest_dropoff.dropoff_share",
+          "value": 0.415288374959
+        },
+        "conv": {
+          "ref": "funnel_summary.json:largest_dropoff.conversion_from_prev",
+          "value": 0.496726395589
+        }
+      },
+      "sources": [
+        "funnel_summary.json"
+      ]
+    },
+    {
+      "id": "FUN-003",
+      "text": "The same stage is the largest drop-off in 13 of 15 segments (device, channel, city tier, week).",
+      "template": "The same stage is the largest drop-off in {same} of {total} segments (device, channel, city tier, week).",
+      "metrics": {
+        "same": {
+          "ref": "funnel_summary.json:segments_where_largest_dropoff_is_same_stage",
+          "value": 13
+        },
+        "total": {
+          "ref": "funnel_summary.json:segments_total",
+          "value": 15
+        }
+      },
+      "sources": [
+        "funnel_summary.json"
+      ]
+    },
+    {
+      "id": "FUN-004",
+      "text": "Median time from KYC start to KYC completion is 46 minutes; the slowest 10% take over 230 minutes.",
+      "template": "Median time from KYC start to KYC completion is {med:.0f} minutes; the slowest 10% take over {p90:.0f} minutes.",
+      "metrics": {
+        "med": {
+          "ref": "funnel_summary.json:stage_timing_all_devices.kyc_started\u2192kyc_completed.median_minutes",
+          "value": 46.225
+        },
+        "p90": {
+          "ref": "funnel_summary.json:stage_timing_all_devices.kyc_started\u2192kyc_completed.p90_minutes",
+          "value": 229.705
+        }
+      },
+      "sources": [
+        "funnel_summary.json"
+      ]
+    },
+    {
+      "id": "PWR-001",
+      "text": "Detecting a 3.0 pp lift from a 49.7% baseline at alpha 0.05 and 80% power needs 4,357 users per arm (statsmodels 4,356.8 vs closed form 4,356.9).",
+      "template": "Detecting a {mde:.1f} pp lift from a {base:.1%} baseline at alpha 0.05 and 80% power needs {n:,} users per arm (statsmodels {nh:,.1f} vs closed form {ncf:,.1f}).",
+      "metrics": {
+        "mde": {
+          "ref": "power_analysis.json:inputs.mde_pp",
+          "value": 3.0
+        },
+        "base": {
+          "ref": "power_analysis.json:inputs.baseline_kyc_completion_rate",
+          "value": 0.496726395589
+        },
+        "n": {
+          "ref": "power_analysis.json:required_users_per_arm.used",
+          "value": 4357
+        },
+        "nh": {
+          "ref": "power_analysis.json:required_users_per_arm.statsmodels_cohens_h",
+          "value": 4356.76911125
+        },
+        "ncf": {
+          "ref": "power_analysis.json:required_users_per_arm.closed_form",
+          "value": 4356.91120423
+        }
+      },
+      "sources": [
+        "power_analysis.json"
+      ]
+    },
+    {
+      "id": "PWR-002",
+      "text": "Before simulating, the feasibility check gave the decision guardrail only a 30% chance of passing even with no true harm; the plan was kept and reported, not tuned.",
+      "template": "Before simulating, the feasibility check gave the decision guardrail only a {p:.0%} chance of passing even with no true harm; the plan was kept and reported, not tuned.",
+      "metrics": {
+        "p": {
+          "ref": "feasibility.json:guardrails_assuming_no_true_difference.delinquent_per_1000_randomized.probability_of_pass",
+          "value": 0.3044437787
+        }
+      },
+      "sources": [
+        "feasibility.json"
+      ]
+    },
+    {
+      "id": "EXP-001",
+      "text": "The simplified KYC flow raised the KYC completion rate by +4.55 pp (95% CI 3.06 to 6.03 pp; relative lift +9.1%).",
+      "template": "The simplified KYC flow raised the KYC completion rate by {diff:+.2f} pp (95% CI {lo:.2f} to {hi:.2f} pp; relative lift {lift:+.1%}).",
+      "metrics": {
+        "diff": {
+          "ref": "experiment_results.json:primary.diff_pp",
+          "value": 4.54758673813
+        },
+        "lo": {
+          "ref": "experiment_results.json:primary.diff_ci_pp.0",
+          "value": 3.06285483286
+        },
+        "hi": {
+          "ref": "experiment_results.json:primary.diff_ci_pp.1",
+          "value": 6.02950794003
+        },
+        "lift": {
+          "ref": "experiment_results.json:primary.relative_lift",
+          "value": 0.090878098151
+        }
+      },
+      "sources": [
+        "experiment_results.json"
+      ]
+    },
+    {
+      "id": "EXP-002",
+      "text": "Assignment was balanced (8,639 control vs 8,740 treatment; sample-ratio check p = 0.44).",
+      "template": "Assignment was balanced ({c:,} control vs {t:,} treatment; sample-ratio check p = {p:.2f}).",
+      "metrics": {
+        "c": {
+          "ref": "srm.json:observed.control",
+          "value": 8639
+        },
+        "t": {
+          "ref": "srm.json:observed.treatment",
+          "value": 8740
+        },
+        "p": {
+          "ref": "srm.json:p_value",
+          "value": 0.443592117922
+        }
+      },
+      "sources": [
+        "srm.json"
+      ]
+    },
+    {
+      "id": "EXP-003",
+      "text": "The true planted effect of +4.76 pp lies inside the 95% CI; the estimate is off by -0.21 pp.",
+      "template": "The true planted effect of {truth:+.2f} pp lies inside the 95% CI; the estimate is off by {err:+.2f} pp.",
+      "metrics": {
+        "truth": {
+          "ref": "experiment_results.json:ground_truth_comparison.primary_true_diff_pp",
+          "value": 4.75796714307
+        },
+        "err": {
+          "ref": "experiment_results.json:ground_truth_comparison.primary_estimate_minus_truth_pp",
+          "value": -0.210380404945
+        }
+      },
+      "sources": [
+        "experiment_results.json"
+      ]
+    },
+    {
+      "id": "EXP-004",
+      "text": "The share of randomized users reaching disbursal rose by +2.24 pp (95% CI 0.97 to 3.51 pp), so the gain survives the credit decision.",
+      "template": "The share of randomized users reaching disbursal rose by {diff:+.2f} pp (95% CI {lo:.2f} to {hi:.2f} pp), so the gain survives the credit decision.",
+      "metrics": {
+        "diff": {
+          "ref": "experiment_results.json:secondary.diff_pp",
+          "value": 2.24046240202
+        },
+        "lo": {
+          "ref": "experiment_results.json:secondary.diff_ci_pp.0",
+          "value": 0.969217903383
+        },
+        "hi": {
+          "ref": "experiment_results.json:secondary.diff_ci_pp.1",
+          "value": 3.51053973153
+        }
+      },
+      "sources": [
+        "experiment_results.json"
+      ]
+    },
+    {
+      "id": "EXP-005",
+      "text": "Exploratory: 9 of 11 segment effects remain significant after Holm correction; segments do not drive the decision.",
+      "template": "Exploratory: {sig} of {n} segment effects remain significant after Holm correction; segments do not drive the decision.",
+      "metrics": {
+        "sig": {
+          "ref": "segment_summary.json:significant_after_holm",
+          "value": 9
+        },
+        "n": {
+          "ref": "segment_summary.json:segments_tested",
+          "value": 11
+        }
+      },
+      "sources": [
+        "segment_summary.json"
+      ]
+    },
+    {
+      "id": "GRD-001",
+      "text": "Early-delinquent loans per 1,000 randomized users moved by +1.42 (one-sided 95% bound +4.59 vs a +2.1 margin): inconclusive.",
+      "template": "Early-delinquent loans per 1,000 randomized users moved by {diff:+.2f} (one-sided 95% bound {b:+.2f} vs a +{m} margin): {label}.",
+      "metrics": {
+        "diff": {
+          "ref": "guardrails.json:guardrails.delinquent_per_1000_randomized.difference",
+          "value": 1.42258392374
+        },
+        "b": {
+          "ref": "guardrails.json:guardrails.delinquent_per_1000_randomized.one_sided_95_bound",
+          "value": 4.59091800775
+        },
+        "m": {
+          "ref": "guardrails.json:guardrails.delinquent_per_1000_randomized.margin",
+          "value": 2.1
+        },
+        "label": {
+          "ref": "guardrails.json:guardrails.delinquent_per_1000_randomized.label",
+          "value": "inconclusive"
+        }
+      },
+      "sources": [
+        "guardrails.json"
+      ]
+    },
+    {
+      "id": "GRD-002",
+      "text": "Per loan, the early delinquency rate changed by -0.04 pp, but the treatment arm disbursed 251.9 loans per 1,000 randomized users vs 229.5, so the per-user count rises mechanically.",
+      "template": "Per loan, the early delinquency rate changed by {d:+.2f} pp, but the treatment arm disbursed {lt:.1f} loans per 1,000 randomized users vs {lc:.1f}, so the per-user count rises mechanically.",
+      "metrics": {
+        "d": {
+          "ref": "guardrails.json:guardrails.early_delinquency_rate.difference",
+          "value": -0.0362756454385
+        },
+        "lt": {
+          "ref": "guardrails.json:per_loan_vs_per_user.loans_per_1000_randomized.treatment",
+          "value": 251.945080092
+        },
+        "lc": {
+          "ref": "guardrails.json:per_loan_vs_per_user.loans_per_1000_randomized.control",
+          "value": 229.540456071
+        }
+      },
+      "sources": [
+        "guardrails.json"
+      ]
+    },
+    {
+      "id": "GRD-003",
+      "text": "Diagnostic guardrails: early delinquency rate pass; approval rate pass (reported, not decisive).",
+      "template": "Diagnostic guardrails: early delinquency rate {a}; approval rate {b} (reported, not decisive).",
+      "metrics": {
+        "a": {
+          "ref": "guardrails.json:guardrails.early_delinquency_rate.label",
+          "value": "pass"
+        },
+        "b": {
+          "ref": "guardrails.json:guardrails.approval_rate.label",
+          "value": "pass"
+        }
+      },
+      "sources": [
+        "guardrails.json"
+      ]
+    },
+    {
+      "id": "VAL-001",
+      "text": "Across 1,000 simulated A/A tests the false-positive rate was 4.9% (target 5%).",
+      "template": "Across {n:,} simulated A/A tests the false-positive rate was {fpr:.1%} (target 5%).",
+      "metrics": {
+        "n": {
+          "ref": "validation_sims.json:aa_test.replications",
+          "value": 1000
+        },
+        "fpr": {
+          "ref": "validation_sims.json:aa_test.false_positive_rate",
+          "value": 0.049
+        }
+      },
+      "sources": [
+        "validation_sims.json"
+      ]
+    },
+    {
+      "id": "VAL-002",
+      "text": "95.4% of 95% confidence intervals contained the true effect across 500 replications.",
+      "template": "{cov:.1%} of 95% confidence intervals contained the true effect across {n} replications.",
+      "metrics": {
+        "cov": {
+          "ref": "validation_sims.json:ci_coverage.coverage",
+          "value": 0.954
+        },
+        "n": {
+          "ref": "validation_sims.json:ci_coverage.replications",
+          "value": 500
+        }
+      },
+      "sources": [
+        "validation_sims.json"
+      ]
+    },
+    {
+      "id": "VAL-003",
+      "text": "The sample-ratio check flagged the deliberately broken dataset (48.3% treatment, p = 1.1e-05).",
+      "template": "The sample-ratio check flagged the deliberately broken dataset ({share:.1%} treatment, p = {p:.1e}).",
+      "metrics": {
+        "share": {
+          "ref": "validation_sims.json:srm_detection.broken_dataset.treatment_share",
+          "value": 0.483004189108
+        },
+        "p": {
+          "ref": "validation_sims.json:srm_detection.broken_dataset.p_value",
+          "value": 1.11283513759e-05
+        }
+      },
+      "sources": [
+        "validation_sims.json"
+      ]
+    },
+    {
+      "id": "VAL-004",
+      "text": "Peeking daily and stopping at the first p < 0.05 inflated the false-positive rate to 24.7%, vs 4.7% at the fixed horizon.",
+      "template": "Peeking daily and stopping at the first p < 0.05 inflated the false-positive rate to {peek:.1%}, vs {fixed:.1%} at the fixed horizon.",
+      "metrics": {
+        "peek": {
+          "ref": "validation_sims.json:peeking.false_positive_rate_peeking",
+          "value": 0.247
+        },
+        "fixed": {
+          "ref": "validation_sims.json:peeking.false_positive_rate_fixed_horizon",
+          "value": 0.047
+        }
+      },
+      "sources": [
+        "validation_sims.json"
+      ]
+    },
+    {
+      "id": "VAL-005",
+      "text": "Cleaning removed exactly the 1,322 injected duplicates and kept all 5,085 legitimate KYC retries.",
+      "template": "Cleaning removed exactly the {dups:,} injected duplicates and kept all {retries:,} legitimate KYC retries.",
+      "metrics": {
+        "dups": {
+          "ref": "data_quality_report.json:duplicates.detected_and_removed",
+          "value": 1322
+        },
+        "retries": {
+          "ref": "data_quality_report.json:legitimate_repeats_kept.total",
+          "value": 5085
+        }
+      },
+      "sources": [
+        "data_quality_report.json"
+      ]
+    },
+    {
+      "id": "DEC-001",
+      "text": "Under the pre-registered rule the decision is Iterate.",
+      "template": "Under the pre-registered rule the decision is {decision}.",
+      "metrics": {
+        "decision": {
+          "ref": "decision.json:decision_label",
+          "value": "Iterate"
+        }
+      },
+      "sources": [
+        "decision.json"
+      ]
+    }
+  ]
+}

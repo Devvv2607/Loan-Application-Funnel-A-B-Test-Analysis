@@ -1,0 +1,20 @@
+{
+  "simulated": true,
+  "seed": 42,
+  "duplicate_events": 1322,
+  "out_of_order_events": 661,
+  "out_of_order_by_stage": {
+    "decision_made": 162,
+    "kyc_completed": 140,
+    "kyc_started": 290,
+    "loan_disbursed": 69
+  },
+  "null_device_users": 250,
+  "missing_step_users": 60,
+  "missing_step_by_stage": {
+    "decision_made": 16,
+    "kyc_started": 44
+  },
+  "missing_step_events_dropped": 67,
+  "legitimate_kyc_retries_present": 5085
+}

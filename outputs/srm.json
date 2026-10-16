@@ -1,0 +1,20 @@
+{
+  "simulated": true,
+  "expected_share": [
+    0.5,
+    0.5
+  ],
+  "observed": {
+    "control": 8639,
+    "treatment": 8740
+  },
+  "expected": {
+    "control": 8689.5,
+    "treatment": 8689.5
+  },
+  "treatment_share": 0.502905805858,
+  "chi2": 0.586972783244,
+  "p_value": 0.443592117922,
+  "threshold": 0.001,
+  "passed": true
+}

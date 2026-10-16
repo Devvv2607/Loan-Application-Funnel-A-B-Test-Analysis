@@ -1,0 +1,323 @@
+{
+  "simulated": true,
+  "seed": 42,
+  "note": "Population-expected values from the generating model (src/model.py). Observed estimates differ by sampling noise.",
+  "pre_period_funnel": {
+    "reach_share_of_applicants": {
+      "kyc_started": 0.701217992023,
+      "kyc_completed": 0.348726029084,
+      "decision_made": 0.320827946758,
+      "approved": 0.190396710933,
+      "loan_disbursed": 0.161837204293,
+      "dpd30_first_emi": 0.0107178407063
+    },
+    "stage_to_stage_conversion": {
+      "kyc_started": 0.701217992023,
+      "kyc_completed": 0.497314719605,
+      "decision_made": 0.92,
+      "approved": 0.593454257516,
+      "loan_disbursed": 0.85,
+      "dpd30_first_emi": 0.066226061882
+    }
+  },
+  "pre_period_funnel_by_segment": {
+    "device=android": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.70542466942,
+        "kyc_completed": 0.361201213757,
+        "decision_made": 0.332305116656,
+        "approved": 0.197178019172,
+        "loan_disbursed": 0.167601316296,
+        "dpd30_first_emi": 0.0114856796757
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.70542466942,
+        "kyc_completed": 0.512033714463,
+        "decision_made": 0.92,
+        "approved": 0.593364378964,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0685297701091
+      }
+    },
+    "device=ios": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.70542466942,
+        "kyc_completed": 0.378681998121,
+        "decision_made": 0.348387438271,
+        "approved": 0.206667411727,
+        "loan_disbursed": 0.175667299968,
+        "dpd30_first_emi": 0.00998633205387
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.70542466942,
+        "kyc_completed": 0.53681422629,
+        "decision_made": 0.92,
+        "approved": 0.593211433663,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0568479851156
+      }
+    },
+    "device=web": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.684391282434,
+        "kyc_completed": 0.283092584466,
+        "decision_made": 0.260445177709,
+        "approved": 0.154731024681,
+        "loan_disbursed": 0.131521370979,
+        "dpd30_first_emi": 0.00899589768848
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.684391282434,
+        "kyc_completed": 0.413641423747,
+        "decision_made": 0.92,
+        "approved": 0.594102091051,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0683987523968
+      }
+    },
+    "channel=organic": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.71087940045,
+        "kyc_completed": 0.358994101102,
+        "decision_made": 0.330274573014,
+        "approved": 0.197405577145,
+        "loan_disbursed": 0.167794740573,
+        "dpd30_first_emi": 0.0106172438311
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.71087940045,
+        "kyc_completed": 0.50500000545,
+        "decision_made": 0.92,
+        "approved": 0.597701407479,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0632751884523
+      }
+    },
+    "channel=paid_social": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.645630434932,
+        "kyc_completed": 0.294245002156,
+        "decision_made": 0.270705401983,
+        "approved": 0.145278530674,
+        "loan_disbursed": 0.123486751073,
+        "dpd30_first_emi": 0.00939847421195
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.645630434932,
+        "kyc_completed": 0.455748344928,
+        "decision_made": 0.92,
+        "approved": 0.536666537165,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0761091706623
+      }
+    },
+    "channel=referral": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.750170302772,
+        "kyc_completed": 0.406547144451,
+        "decision_made": 0.374023372895,
+        "approved": 0.236766067915,
+        "loan_disbursed": 0.201251157728,
+        "dpd30_first_emi": 0.0127449585909
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.750170302772,
+        "kyc_completed": 0.541939800801,
+        "decision_made": 0.92,
+        "approved": 0.633024792229,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0633286224775
+      }
+    },
+    "channel=partner": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.730977629847,
+        "kyc_completed": 0.369112606922,
+        "decision_made": 0.339583598368,
+        "approved": 0.211031447716,
+        "loan_disbursed": 0.179376730559,
+        "dpd30_first_emi": 0.0113525965662
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.730977629847,
+        "kyc_completed": 0.504957459504,
+        "decision_made": 0.92,
+        "approved": 0.621441815005,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0632891263593
+      }
+    },
+    "city_tier=1": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.701217992023,
+        "kyc_completed": 0.365610203504,
+        "decision_made": 0.336361387224,
+        "approved": 0.207066576395,
+        "loan_disbursed": 0.176006589936,
+        "dpd30_first_emi": 0.0106913111365
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.701217992023,
+        "kyc_completed": 0.521393072715,
+        "decision_made": 0.92,
+        "approved": 0.615607451569,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0607438115834
+      }
+    },
+    "city_tier=2": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.701217992023,
+        "kyc_completed": 0.348281712583,
+        "decision_made": 0.320419175577,
+        "approved": 0.189659536635,
+        "loan_disbursed": 0.161210606139,
+        "dpd30_first_emi": 0.0107466299657
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.701217992023,
+        "kyc_completed": 0.496681084264,
+        "decision_made": 0.92,
+        "approved": 0.59191069415,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0666620529696
+      }
+    },
+    "city_tier=3": {
+      "reach_share_of_applicants": {
+        "kyc_started": 0.701217992023,
+        "kyc_completed": 0.322333393115,
+        "decision_made": 0.296546721665,
+        "approved": 0.164756970214,
+        "loan_disbursed": 0.140043424682,
+        "dpd30_first_emi": 0.010719983055
+      },
+      "stage_to_stage_conversion": {
+        "kyc_started": 0.701217992023,
+        "kyc_completed": 0.459676444104,
+        "decision_made": 0.92,
+        "approved": 0.555585201847,
+        "loan_disbursed": 0.85,
+        "dpd30_first_emi": 0.0765475642955
+      }
+    }
+  },
+  "treatment_effect": {
+    "kyc_completion_control": 0.497314719605,
+    "kyc_completion_treatment": 0.544894391035,
+    "kyc_completion_diff_pp": 4.75796714307,
+    "kyc_completion_relative_lift": 0.0956731613908,
+    "disbursal_share_diff_pp": 1.63813592364,
+    "delinquent_per_1000_diff": 1.83905472043,
+    "early_delinquency_rate_diff_pp": 0.305119616715,
+    "approval_rate_diff_pp": -1.33756724013
+  },
+  "treatment_effect_by_segment": {
+    "device=android": {
+      "kyc_completion_control": 0.512033714463,
+      "kyc_completion_treatment": 0.557167172734,
+      "kyc_completion_diff_pp": 4.51334582703,
+      "kyc_completion_relative_lift": 0.0881454814311,
+      "disbursal_share_diff_pp": 1.55231395911,
+      "delinquent_per_1000_diff": 1.78109516467,
+      "early_delinquency_rate_diff_pp": 0.283391099773,
+      "approval_rate_diff_pp": -1.24379623195
+    },
+    "device=ios": {
+      "kyc_completion_control": 0.53681422629,
+      "kyc_completion_treatment": 0.56940082494,
+      "kyc_completion_diff_pp": 3.25865986497,
+      "kyc_completion_relative_lift": 0.0607036793248,
+      "disbursal_share_diff_pp": 1.11773835426,
+      "delinquent_per_1000_diff": 1.07706664851,
+      "early_delinquency_rate_diff_pp": 0.169736150712,
+      "approval_rate_diff_pp": -0.884686734568
+    },
+    "device=web": {
+      "kyc_completion_control": 0.413641423747,
+      "kyc_completion_treatment": 0.48294588141,
+      "kyc_completion_diff_pp": 6.93044576629,
+      "kyc_completion_relative_lift": 0.167547188662,
+      "disbursal_share_diff_pp": 2.39511231164,
+      "delinquent_per_1000_diff": 2.73111689665,
+      "early_delinquency_rate_diff_pp": 0.505677518103,
+      "approval_rate_diff_pp": -2.18365844849
+    },
+    "channel=organic": {
+      "kyc_completion_control": 0.50500000545,
+      "kyc_completion_treatment": 0.552698093733,
+      "kyc_completion_diff_pp": 4.76980882832,
+      "kyc_completion_relative_lift": 0.0944516589473,
+      "disbursal_share_diff_pp": 1.66297921291,
+      "delinquent_per_1000_diff": 1.78418934776,
+      "early_delinquency_rate_diff_pp": 0.289682884374,
+      "approval_rate_diff_pp": -1.31057004681
+    },
+    "channel=paid_social": {
+      "kyc_completion_control": 0.455748344928,
+      "kyc_completion_treatment": 0.503296965354,
+      "kyc_completion_diff_pp": 4.75486204263,
+      "kyc_completion_relative_lift": 0.104330868023,
+      "disbursal_share_diff_pp": 1.43363429758,
+      "delinquent_per_1000_diff": 1.83160386469,
+      "early_delinquency_rate_diff_pp": 0.360151012563,
+      "approval_rate_diff_pp": -1.42755362327
+    },
+    "channel=referral": {
+      "kyc_completion_control": 0.541939800801,
+      "kyc_completion_treatment": 0.589145796975,
+      "kyc_completion_diff_pp": 4.72059961743,
+      "kyc_completion_relative_lift": 0.0871056086018,
+      "disbursal_share_diff_pp": 1.78253806565,
+      "delinquent_per_1000_diff": 1.91472978184,
+      "early_delinquency_rate_diff_pp": 0.274685351662,
+      "approval_rate_diff_pp": -1.20309124438
+    },
+    "channel=partner": {
+      "kyc_completion_control": 0.504957459504,
+      "kyc_completion_treatment": 0.552664352466,
+      "kyc_completion_diff_pp": 4.77068929622,
+      "kyc_completion_relative_lift": 0.0944770535898,
+      "disbursal_share_diff_pp": 1.75564710138,
+      "delinquent_per_1000_diff": 1.88405407521,
+      "early_delinquency_rate_diff_pp": 0.293942639628,
+      "approval_rate_diff_pp": -1.30211545613
+    },
+    "city_tier=1": {
+      "kyc_completion_control": 0.521393072715,
+      "kyc_completion_treatment": 0.565786359595,
+      "kyc_completion_diff_pp": 4.43932868801,
+      "kyc_completion_relative_lift": 0.0851436070082,
+      "disbursal_share_diff_pp": 1.61917970594,
+      "delinquent_per_1000_diff": 1.6567324274,
+      "early_delinquency_rate_diff_pp": 0.251945540618,
+      "approval_rate_diff_pp": -1.17062125174
+    },
+    "city_tier=2": {
+      "kyc_completion_control": 0.496681084264,
+      "kyc_completion_treatment": 0.54126666681,
+      "kyc_completion_diff_pp": 4.45855825464,
+      "kyc_completion_relative_lift": 0.0897670234663,
+      "disbursal_share_diff_pp": 1.54094253101,
+      "delinquent_per_1000_diff": 1.72238010935,
+      "early_delinquency_rate_diff_pp": 0.283378349122,
+      "approval_rate_diff_pp": -1.23516485842
+    },
+    "city_tier=3": {
+      "kyc_completion_control": 0.459676444104,
+      "kyc_completion_treatment": 0.516546055254,
+      "kyc_completion_diff_pp": 5.68696111498,
+      "kyc_completion_relative_lift": 0.12371660954,
+      "disbursal_share_diff_pp": 1.80453662162,
+      "delinquent_per_1000_diff": 2.2941148448,
+      "early_delinquency_rate_diff_pp": 0.419170844676,
+      "approval_rate_diff_pp": -1.64941701239
+    }
+  },
+  "realised": {
+    "randomized_users": 17379,
+    "treatment_users": 8740,
+    "marginal_applicants_in_treatment": 443,
+    "legitimate_kyc_retries": 5085
+  }
+}

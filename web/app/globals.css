@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens: Project 1 palette. muted-strong is a darker muted used for
+   small text so it meets WCAG AA contrast on the off-white background. */
+:root {
+  --bg: #faf6f0;
+  --panel: #f3eee7;
+  --border: #e5ded3;
+  --ink: #0f3b33;
+  --muted: #5e7a72;
+  --muted-strong: #4f6a62;
+  --link: #14532d;
+  --warn-bg: #f5ebd7;
+  --warn-ink: #8a5a00;
+  --control: #1e4e79;
+  --treatment: #2e6b4f;
+  --accent: #b4552d;
+  --good: #1f6b3a;
+  --bad: #a3361c;
+  --grid: #e5ded3;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1714;
+    --panel: #16221e;
+    --border: #2a3a34;
+    --ink: #e7efea;
+    --muted: #9fb5ac;
+    --muted-strong: #b3c6be;
+    --link: #8fd0a9;
+    --warn-bg: #3a2e14;
+    --warn-ink: #f2c879;
+    --control: #82acd6;
+    --treatment: #7fc6a0;
+    --accent: #e6956c;
+    --good: #8fd0a9;
+    --bad: #f0947a;
+    --grid: #2a3a34;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e1714;
+  --panel: #16221e;
+  --border: #2a3a34;
+  --ink: #e7efea;
+  --muted: #9fb5ac;
+  --muted-strong: #b3c6be;
+  --link: #8fd0a9;
+  --warn-bg: #3a2e14;
+  --warn-ink: #f2c879;
+  --control: #82acd6;
+  --treatment: #7fc6a0;
+  --accent: #e6956c;
+  --good: #8fd0a9;
+  --bad: #f0947a;
+  --grid: #2a3a34;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--muted-strong);
+}
+
+.chip {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 1px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 4px 16px;
+}
+
+@media (max-width: 480px) {
+  .kv {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.data-table th {
+  font-weight: 600;
+  color: var(--muted-strong);
+}
+
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.recharts-text {
+  fill: var(--muted-strong);
+}
+
+.recharts-cartesian-grid line {
+  stroke: var(--grid);
+}
+
+.recharts-default-tooltip,
+.chart-tooltip {
+  background: var(--bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px 10px;
+}
+
+/* Print: one clean A4 memo, no navigation. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  :root {
+    --bg: #ffffff;
+    --panel: #ffffff;
+    --ink: #000000;
+  }
+  body {
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-full {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .memo h1 {
+    font-size: 17pt;
+  }
+  .memo h2 {
+    font-size: 12pt;
+    margin-top: 8pt;
+  }
+  .memo p,
+  .memo li {
+    margin: 2pt 0;
+  }
+}

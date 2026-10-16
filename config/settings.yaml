@@ -1,0 +1,54 @@
+# Global run settings: paths, seed, periods, cleaning tolerances, and the
+# feasibility plan (planning inputs only; the frozen pre-registration lives in
+# experiment_brief.yaml, written in Phase 4).
+
+seed: 42
+
+paths:
+  raw_dir: data/raw
+  broken_dir: data/raw/broken          # SRM-validation dataset only; never mixed into the main analysis
+  clean_dir: data/clean
+  duckdb: data/clean/funnel.duckdb
+  outputs: outputs
+  sql: sql
+  memo: memo/recommendation.md
+  web_data: web/public/data
+
+periods:
+  start_date: "2026-03-02"             # a Monday, so every period is whole weeks
+  pre_period_weeks: 4                  # baseline funnel, no experiment
+  experiment_weeks: 4                  # planned; confirmed or changed by the Phase 0.5 feasibility check
+
+cleaning:
+  dedup_tolerance_seconds: 5           # same user + event (+ outcome) within this many seconds = duplicate
+
+# Planning inputs for Phase 0.5. These are business choices made before any
+# data exists; Phase 4 copies them into the frozen experiment brief.
+feasibility_plan:
+  alpha: 0.05
+  power: 0.80
+  guardrail_alpha_one_sided: 0.05
+  business_mde_pp: 3.0                 # smallest KYC completion gain worth the engineering + compliance cost of shipping
+  guardrail_margins:
+    # Superseded: the initial +3.0 plan was infeasible (outputs/feasibility_initial.json).
+    # The decision margin is now derived by break-even in src/brief.py and frozen in experiment_brief.yaml.
+    delinquent_per_1000_randomized: 3.0
+    early_delinquency_rate_pp: 1.5       # diagnostic: max tolerated increase in per-loan early delinquency (pp)
+    approval_rate_pp: -3.0               # diagnostic: max tolerated drop in approval rate among decisions (pp)
+
+# Business assumptions for the break-even guardrail margin. Chosen once, as a
+# fraction of principal so the margin does not depend on loan size. They are
+# independent of the planted treatment and selection effects.
+unit_economics:
+  avg_loan_amount: 40000               # matches the simulated small-ticket loan (fictional currency units)
+  net_profit_good_loan_pct: 8.0        # ~24-30% APR, 12-month tenor, minus funding (~10%) and servicing cost, on avg outstanding
+  loss_early_delinquent_loan_pct: 45.0 # ~60% of 30+ DPD-on-first-EMI loans roll to write-off x ~75% loss given default
+
+# Website metadata. Unknown links stay null and render as "Not yet available".
+site:
+  author: Dev Mittal
+  published: "2026-10-16"
+  last_updated: "2026-10-16"
+  github_url: null
+  linkedin_url: null
+  live_url: null

@@ -1,0 +1,47 @@
+{
+  "simulated": true,
+  "decision": "iterate",
+  "decision_label": "Iterate",
+  "rule": {
+    "decision_guardrail": "delinquent_per_1000_randomized",
+    "ship": "primary is significant (two-sided p < alpha) and positive AND the decision guardrail passes",
+    "iterate": "primary is significant and positive AND the decision guardrail fails or is inconclusive",
+    "dont_ship": "primary is not significant, or is significant and negative",
+    "diagnostics": "reported alongside the decision; they do not change it"
+  },
+  "conditions": [
+    {
+      "condition": "Primary metric significant (p = 2.0e-09 < 0.05)",
+      "met": true
+    },
+    {
+      "condition": "Primary effect positive (+4.55 pp)",
+      "met": true
+    },
+    {
+      "condition": "Decision guardrail passes non-inferiority (label: inconclusive)",
+      "met": false
+    }
+  ],
+  "evidence": {
+    "primary_diff_pp": 4.54758673813,
+    "primary_ci_pp": [
+      3.06285483286,
+      6.02950794003
+    ],
+    "primary_p": 1.95547972812e-09,
+    "decision_guardrail": "delinquent_per_1000_randomized",
+    "guardrail_label": "inconclusive",
+    "guardrail_difference": 1.42258392374,
+    "guardrail_bound": 4.59091800775,
+    "guardrail_margin": 2.1,
+    "diagnostics": {
+      "early_delinquency_rate": "pass",
+      "approval_rate": "pass"
+    }
+  },
+  "assignment_counts": {
+    "control": 8639,
+    "treatment": 8740
+  }
+}
