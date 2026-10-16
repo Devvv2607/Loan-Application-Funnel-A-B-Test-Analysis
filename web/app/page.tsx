@@ -35,6 +35,7 @@ export default function Home() {
         <Link href="/experiment/">See the experiment ↗</Link>
         <Link href="/recommendation/">Read the recommendation ↗</Link>
         <ExtLink href={site.repo_url} label="Source code" />
+        <ExtLink href={site.live_url} label="Live site" />
       </nav>
 
       <Section title="Coverage">
